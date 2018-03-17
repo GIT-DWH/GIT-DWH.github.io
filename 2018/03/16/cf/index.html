@@ -18,6 +18,16 @@
 
 
 
+<script>
+    (function(){
+        if('dwh'){
+            if (prompt('请输入文章密码') !== 'dwh'){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -86,7 +96,7 @@
 <meta property="og:site_name" content="天之界">
 <meta property="og:description" content="##题目大意：给你$n$个数，和$m$个操作询问，每个询问给你$l,r$两个数，问你反转$l,r$区间的元素后，整个序列的逆序对的个数是奇数个还是偶数个，奇数个输出$odd$,偶数个则输出$even$,该逆序对以从小到大为标准次序，反转后不会恢复为原序列，且保证n个数中每个数都不相同。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-16T14:38:51.235Z">
+<meta property="og:updated_time" content="2018-03-17T01:17:39.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces911D---Inversion Counting">
 <meta name="twitter:description" content="##题目大意：给你$n$个数，和$m$个操作询问，每个询问给你$l,r$两个数，问你反转$l,r$区间的元素后，整个序列的逆序对的个数是奇数个还是偶数个，奇数个输出$odd$,偶数个则输出$even$,该逆序对以从小到大为标准次序，反转后不会恢复为原序列，且保证n个数中每个数都不相同。">
