@@ -89,17 +89,17 @@
 
 
 
-<meta name="description" content="##题目大意：给你$n$个数，和$m$个操作询问，每个询问给你$l,r$两个数，问你反转$l,r$区间的元素后，整个序列的逆序对的个数是奇数个还是偶数个，奇数个输出$odd$,偶数个则输出$even$,该逆序对以从小到大为标准次序，反转后不会恢复为原序列，且保证n个数中每个数都不相同。">
+<meta name="description" content="题目大意：给你$n$个数，和$m$个操作询问，每个询问给你$l,r$两个数，问你反转$l,r$区间的元素后，整个序列的逆序对的个数是奇数个还是偶数个，奇数个输出$odd$,偶数个则输出$even$,该逆序对以从小到大为标准次序，反转后不会恢复为原序列，且保证n个数中每个数都不相同。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Codeforces911D---Inversion Counting">
 <meta property="og:url" content="http://yoursite.com/2018/03/16/cf/index.html">
 <meta property="og:site_name" content="天之界">
-<meta property="og:description" content="##题目大意：给你$n$个数，和$m$个操作询问，每个询问给你$l,r$两个数，问你反转$l,r$区间的元素后，整个序列的逆序对的个数是奇数个还是偶数个，奇数个输出$odd$,偶数个则输出$even$,该逆序对以从小到大为标准次序，反转后不会恢复为原序列，且保证n个数中每个数都不相同。">
+<meta property="og:description" content="题目大意：给你$n$个数，和$m$个操作询问，每个询问给你$l,r$两个数，问你反转$l,r$区间的元素后，整个序列的逆序对的个数是奇数个还是偶数个，奇数个输出$odd$,偶数个则输出$even$,该逆序对以从小到大为标准次序，反转后不会恢复为原序列，且保证n个数中每个数都不相同。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-17T01:17:39.568Z">
+<meta property="og:updated_time" content="2018-03-17T01:21:33.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces911D---Inversion Counting">
-<meta name="twitter:description" content="##题目大意：给你$n$个数，和$m$个操作询问，每个询问给你$l,r$两个数，问你反转$l,r$区间的元素后，整个序列的逆序对的个数是奇数个还是偶数个，奇数个输出$odd$,偶数个则输出$even$,该逆序对以从小到大为标准次序，反转后不会恢复为原序列，且保证n个数中每个数都不相同。">
+<meta name="twitter:description" content="题目大意：给你$n$个数，和$m$个操作询问，每个询问给你$l,r$两个数，问你反转$l,r$区间的元素后，整个序列的逆序对的个数是奇数个还是偶数个，奇数个输出$odd$,偶数个则输出$even$,该逆序对以从小到大为标准次序，反转后不会恢复为原序列，且保证n个数中每个数都不相同。">
 
 
 
@@ -379,14 +379,12 @@
       
 
       
-        <p>##题目大意：<br>给你$n$个数，和$m$个操作询问，每个询问给你$l,r$两个数，问你反转$l,r$区间的元素后，整个序列的逆序对的个数是奇数个还是偶数个，奇数个输出$odd$,偶数个则输出$even$,该逆序对以从小到大为标准次序，反转后不会恢复为原序列，且保证n个数中每个数都不相同。<br><a id="more"></a></p>
+        <h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给你$n$个数，和$m$个操作询问，每个询问给你$l,r$两个数，问你反转$l,r$区间的元素后，整个序列的逆序对的个数是奇数个还是偶数个，奇数个输出$odd$,偶数个则输出$even$,该逆序对以从小到大为标准次序，反转后不会恢复为原序列，且保证n个数中每个数都不相同。<br><a id="more"></a></p>
 <p>##数据范围：<br>$1 \leq n \leq 1500,1 \leq m \leq 2 \cdot 10^5,1 \leq l_i \leq r_i \leq n,1 \leq a_i \leq n;$</p>
-<p>##解题思路：</p>
-<p>因为要求每次操作后逆序对的对数的奇偶性，如果想暴力做的话，每次对序列进行反转就是$O(n)$的复杂度，还得重新求总逆序对个数，总复杂度就变为了$O(n^{2}\cdot{m})$，这显然会$TLE$的，所以得换个想法，我们先求出初始序列的总逆序对个数$res$，根据$[l,r]$区间逆序对的变化转换为总逆序对个数，但是真正的个数我们其实并不太需要，只需要知道奇偶性就行了；我们知道一个长度为len长的序列，它的逆序对最多为$len\cdot(len-1)/2$(假如该序列为从大到小排序，即总逆序对个数为($1+2+3+\dots+(len-1)=len\cdot(len-1)/2$)暂且称为满逆序对,那么现逆序对个数即与满逆序对个数有关，若满逆序对个数为偶数个，那么现逆序对奇偶性与原逆序对相同，即为加减偶数个数，可以用$len\cdot(len-1)/2$代替，否则当满逆序对个数为奇数个时，那么现逆序对奇偶性与原逆序对相反，即为加减奇数个，也可用$len\cdot(len-1)/2$代替，所以每次只需要将$res+=len\cdot(len-1)/2$后就可以直接判断奇偶性，$O(1)$出答案。</p>
+<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>因为要求每次操作后逆序对的对数的奇偶性，如果想暴力做的话，每次对序列进行反转就是$O(n)$的复杂度，还得重新求总逆序对个数，总复杂度就变为了$O(n^{2}\cdot{m})$，这显然会$TLE$的，所以得换个想法，我们先求出初始序列的总逆序对个数$res$，根据$[l,r]$区间逆序对的变化转换为总逆序对个数，但是真正的个数我们其实并不太需要，只需要知道奇偶性就行了；我们知道一个长度为len长的序列，它的逆序对最多为$len\cdot(len-1)/2$(假如该序列为从大到小排序，即总逆序对个数为($1+2+3+\dots+(len-1)=len\cdot(len-1)/2$)暂且称为满逆序对,那么现逆序对个数即与满逆序对个数有关，若满逆序对个数为偶数个，那么现逆序对奇偶性与原逆序对相同，即为加减偶数个数，可以用$len\cdot(len-1)/2$代替，否则当满逆序对个数为奇数个时，那么现逆序对奇偶性与原逆序对相反，即为加减奇数个，也可用$len\cdot(len-1)/2$代替，所以每次只需要将$res+=len\cdot(len-1)/2$后就可以直接判断奇偶性，$O(1)$出答案。</p>
 <p>##AC代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1500</span>;</span><br><span class="line"><span class="keyword">int</span> n, m, cnt;</span><br><span class="line"><span class="keyword">int</span> a[maxn + <span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">			<span class="keyword">if</span>(a[i] &gt; a[j])cnt++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> l, r;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;l, &amp;r);</span><br><span class="line">		cnt += (r - l + <span class="number">1</span>) * (r - l) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(cnt &amp; <span class="number">1</span>)<span class="built_in">printf</span>(<span class="string">"odd\n"</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"even\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##题目链接：<a href="http://codeforces.com/problemset/problem/911/D" target="_blank" rel="noopener">Go to!</a></p>
-
+<h2 id="题目链接：Go-to"><a href="#题目链接：Go-to" class="headerlink" title="题目链接：Go to!"></a>题目链接：<a href="http://codeforces.com/problemset/problem/911/D" target="_blank" rel="noopener">Go to!</a></h2>
       
     </div>
     
@@ -466,6 +464,32 @@
 
     <div class="post-spread">
       
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
     </div>
   </div>
 
@@ -499,8 +523,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -580,6 +613,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目大意："><span class="nav-number">1.</span> <span class="nav-text">题目大意：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路："><span class="nav-number">2.</span> <span class="nav-text">解题思路：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目链接：Go-to"><span class="nav-number">3.</span> <span class="nav-text">题目链接：Go to!</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
