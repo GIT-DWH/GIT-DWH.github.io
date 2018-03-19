@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+  <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -99,7 +99,7 @@
 <meta property="og:site_name" content="天之界">
 <meta property="og:description" content="题目大意：给你 $n$ 个数，和 $m$ 个操作询问，每个询问给你 $l,r$ 两个数，问你反转 $l,r$ 区间的元素后，整个序列的逆序对的个数是奇数个还是偶数个，奇数个输出 $odd$ ,偶数个则输出 $even$ ,该逆序对以从小到大为标准次序，反转后不会恢复为原序列，且保证 $n$ 个数中每个数都不相同。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-18T13:13:52.859Z">
+<meta property="og:updated_time" content="2018-03-19T05:37:04.070Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces911D---Inversion Counting">
 <meta name="twitter:description" content="题目大意：给你 $n$ 个数，和 $m$ 个操作询问，每个询问给你 $l,r$ 两个数，问你反转 $l,r$ 区间的元素后，整个序列的逆序对的个数是奇数个还是偶数个，奇数个输出 $odd$ ,偶数个则输出 $even$ ,该逆序对以从小到大为标准次序，反转后不会恢复为原序列，且保证 $n$ 个数中每个数都不相同。">
@@ -138,7 +138,7 @@
 
 
 
-  <title>Codeforces911D---Inversion Counting | 天之界</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Codeforces911D---Inversion Counting | 天之界</title>
   
 
 
@@ -157,7 +157,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -201,6 +201,7 @@
             首页
           </a>
         </li>
+		
       
         
         <li class="menu-item menu-item-about">
@@ -211,6 +212,7 @@
             关于
           </a>
         </li>
+		
       
         
         <li class="menu-item menu-item-tags">
@@ -221,6 +223,7 @@
             标签
           </a>
         </li>
+		
       
         
         <li class="menu-item menu-item-categories">
@@ -231,6 +234,7 @@
             分类
           </a>
         </li>
+		
       
         
         <li class="menu-item menu-item-archives">
@@ -241,6 +245,7 @@
             归档
           </a>
         </li>
+		
       
         
         <li class="menu-item menu-item-留言板">
@@ -251,7 +256,9 @@
             留言板
           </a>
         </li>
+		
       
+	  
 
       
         <li class="menu-item menu-item-search">
@@ -293,6 +300,7 @@
     </div>
   
 </nav>
+
 
 
 
@@ -417,7 +425,7 @@
       
 
       
-        <h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给你 $n$ 个数，和 $m$ 个操作询问，每个询问给你 $l,r$ 两个数，问你反转 $l,r$ 区间的元素后，整个序列的逆序对的个数是奇数个还是偶数个，奇数个输出 $odd$ ,偶数个则输出 $even$ ,该逆序对以从小到大为标准次序，反转后不会恢复为原序列，且保证 $n$ 个数中每个数都不相同。</p>
+        <script src="\assets\js\APlayer.min.js"> </script><h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给你 $n$ 个数，和 $m$ 个操作询问，每个询问给你 $l,r$ 两个数，问你反转 $l,r$ 区间的元素后，整个序列的逆序对的个数是奇数个还是偶数个，奇数个输出 $odd$ ,偶数个则输出 $even$ ,该逆序对以从小到大为标准次序，反转后不会恢复为原序列，且保证 $n$ 个数中每个数都不相同。</p>
 <a id="more"></a>
 <h2 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h2><p>$1 \leq n \leq 1500,1 \leq m \leq 2 \cdot 10^5,1 \leq l_i \leq r_i \leq n,1 \leq a_i \leq n;​$</p>
 <h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>因为要求每次操作后逆序对的对数的奇偶性，如果想暴力做的话，每次对序列进行反转就是 $O(n)$ 的复杂度，还得重新求总逆序对个数，总复杂度就变为了 $O(n^{2}\cdot{m})$ ，这显然会 $TLE$ 的，所以得换个想法，我们先求出初始序列的总逆序对个数 $res$ ，根据 $[l,r]$ 区间逆序对的变化转换为总逆序对个数，但是真正的个数我们其实并不太需要，只需要知道奇偶性就行了；我们知道一个长度为len长的序列，它的逆序对最多为 $len\cdot(len-1)/2$ (假如该序列为从大到小排序，即总逆序对个数为 ($1+2+3+\dots+(len-1)=len\cdot(len-1)/2$) 暂且称为满逆序对,那么现逆序对个数即与满逆序对个数有关，若满逆序对个数为偶数个，那么现逆序对奇偶性与原逆序对相同，即为加减偶数个数，可以用 $len\cdot(len-1)/2$ 代替，否则当满逆序对个数为奇数个时，那么现逆序对奇偶性与原逆序对相反，即为加减奇数个，也可用 $len\cdot(len-1)/2$ 代替，所以每次只需要将 $res+=len\cdot(len-1)/2$ 后就可以直接判断奇偶性，$O(1)$ 出答案。</p>
@@ -453,7 +461,7 @@
   <p><span>本文标题:</span>Codeforces911D---Inversion Counting</a></p>
   <p><span>文章作者:</span>DWH</a></p>
   <p><span>发布时间:</span>2018年03月16日 - 21:46:12</p>
-  <p><span>最后更新:</span>2018年03月18日 - 21:13:52</p>
+  <p><span>最后更新:</span>2018年03月19日 - 13:37:04</p>
   <p><span>原始链接:</span><a href="/2018/03/16/Codeforces911D---Inversion Counting/" title="Codeforces911D---Inversion Counting">http://yoursite.com/2018/03/16/Codeforces911D---Inversion Counting/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2018/03/16/Codeforces911D---Inversion Counting/"  aria-label="复制成功！"></i></span>
   </p>
@@ -594,7 +602,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -660,7 +668,7 @@
             </div>
           
 		  
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=22712173&auto=0&height=66"></iframe>
+
           
 
         </div>
@@ -1342,7 +1350,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

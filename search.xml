@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[音乐测试]]></title>
+    <url>%2F2018%2F03%2F19%2F%E9%9F%B3%E4%B9%90%E6%B5%8B%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[四校联赛2-C-Array Gcd]]></title>
     <url>%2F2018%2F03%2F18%2F%E5%9B%9B%E6%A0%A1%E8%81%94%E8%B5%9B2-C-Array-Gcd%2F</url>
     <content type="text"><![CDATA[解题思路：​ 我们考虑到1操作也就是移除连续的一段区间的元素只能操作一次，而且长度是小于n的，那么最后得到的序列肯定是含有第一个元素或者是最后一个元素，那么根据这个性质我们就可以将 $a[1], a[1] +1, a[1] - 1, a[n], a[n] + 1, a[n] - 1$， 这6个数质数分解将质因子存在来，然后去枚举质因子， 对于每一个质因子序列里的每一个数成为这个质因子的代价是不同的，如果 $a[i]$ % $p$ = 0, $cost[i]$ = $0$、 ($a[i]$ +1) % $p$ = $0$ || ($a[i]$ - 1) % p = $0$, $cost[i]$ = $B$, 否则 $cost[i]$ = oo。那么这个时候我们就可以 $dp$ 了， $dp[i][0]$ 表示从一到 $i $ 这个位置还没有进行1操作的最小花费。$dp[i][1]$ 表示从一到 $i$ 这个位置正在进行1操作的最小花费。$dp[i][2]$ 表示从一到 $i$ 这个位置已经结束1操作了的最小花费。 AC代码： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include &lt;cstdio&gt;#include &lt;cstring&gt;#include &lt;algorithm&gt;#include &lt;cmath&gt;#include &lt;vector&gt;const int MaxN = 1e6;typedef long long LL;const LL Max = 1000000000000000000;using namespace std;LL n;LL a, b, c[MaxN + 5], dp[MaxN + 5][4];LL cost[MaxN + 5];vector &lt;LL&gt; G;void G_insert(LL x)&#123; for(LL i = 2;i * i &lt;= x;i++)&#123; if(x % i == 0)&#123; G.push_back(i); while(x % i == 0) x /= i; &#125; &#125; if(x != 1) G.push_back(x);&#125;void Init()&#123; G.clear(); for(int i = 1;i &lt;= n;i++) scanf("%I64d" , &amp;c[i]); for(LL i = -1;i &lt;= 1;i++) G_insert(c[1] + i); for(LL i = -1;i &lt;= 1;i++) G_insert(c[n] + i);&#125;LL Work(LL x)&#123; for(int i = 1;i &lt;= n;i++)&#123; cost[i] = dp[i][0] = dp[i][1] = dp[i][2] = 1LL &lt;&lt; 40; if(c[i] % x == 0) cost[i] = 0; else if((c[i] - 1) % x == 0 || (c[i] + 1) % x == 0) cost[i] = b; &#125; dp[0][0] = dp[0][1] = dp[0][2] = 0; for(int i = 1;i &lt;= n;i++)&#123; dp[i][0] = dp[i - 1][0] + cost[i]; dp[i][1] = min(dp[i - 1][0], dp[i - 1][1]) + a; dp[i][2] = min(dp[i - 1][1], dp[i - 1][2]) + cost[i]; &#125; return min(dp[n][0] , min(dp[n][1], dp[n][2]));&#125;void Solve()&#123; LL ans = 1LL &lt;&lt; 60; for(int i = 0;i &lt; G.size();i++)&#123; ans = min(ans , Work(G[i])); &#125; printf("%I64d\n" , ans);&#125;int main()&#123; while(~scanf("%I64d%I64d%I64d" , &amp;n , &amp;a , &amp;b))&#123; Init(); Solve(); &#125;&#125;]]></content>
@@ -27,6 +32,6 @@
   <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2018%2F03%2F16%2FHELLO%20WORLD%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
   </entry>
 </search>
