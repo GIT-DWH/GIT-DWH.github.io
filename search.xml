@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Codeforces-336-div2-D-Zuma]]></title>
+    <url>%2F2018%2F03%2F20%2FCodeforces-336-div2-D-Zuma%2F</url>
+    <content type="text"><![CDATA[题目链接：http://codeforces.com/contest/608/problem/D 题目大意：​ 给你一个长度为 $n$ 的序列 $c$，每次操作删去当前序列的一个回文串。问：把序列全部删完，最少需要多少次的操作? 数据范围：$1 \leq n \leq 10^5$ $1 \leq c_i \leq n$ 样例：$input$ 1231 2 1 $output$ 11 $In$ $the$ $first$ $sample$, $Genos$ $can$ $destroy$ $the$ $entire$ $line$ $in$ $one$ $second.$ $input$ 1231 2 3 $output$ 13 $In$ $the$ $second$ $sample$, $Genos$ $can$ $only$ $destroy$ $one$ $gemstone$ $at$ $a$ $time$, $so$ $destroying$ $three$ $gemstones $$takes$ $three$ $seconds.$ $input$ 1271 4 4 2 3 2 1 $output$ 12 $In$ $the$ $third$ $sample$, $to$ $achieve$ $the$ $optimal$ $time$ $of$ $two$ $seconds$, $destroy$ $palindrome$ $4$ $4$ $first$ $and$ $then$ $destroy$ $palindrome$ $1$ $2$ $3$ $2$ $1$. 解题思路：这是一道 区间 $dp$ 状态方程：$dp[i][j]$ 代表完全删除区间 $(i,j)$ 最少需要多少次操作？ 转移方程： 区间 $(i,j)$ 可以由 区间 $(i,k)$ + 区间 $(k + 1,j)$ 转移而来。 当 $c[i]$ = $c[j]$ 时，区间 $(i,j)$ 也可以由 区间$(i + 1,j - 1)$ 转移而来。（需要注意的是：当 $i + 1 = j$ 时，直接 $dp[i][j]$ = 1，否则会出现 $i + 1 &gt; j - 1$ 的情况） 小思考：为什么最外层是枚举 区间长度，而不是直接枚举 区间端点 $l,r$ 呢？ 答：因为我们转移的时候是从 小区间 转移到 大区间 的。 AC代码：123456789101112131415161718192021222324#include&lt;bits/stdc++.h&gt;using namespace std;const int inf = 1 &lt;&lt; 30;int c[505],dp[505][505];// dp[i][j] : 完全删除区间 (i,j) 最少需要多少次操作？int main()&#123; int n;cin &gt;&gt; n; memset(dp,0x3f,sizeof(dp));// 初始化为正无穷。 for(int i = 1;i &lt;= n;i++) cin &gt;&gt; c[i], dp[i][i] = 1;// 删除一个数时需要一次操作。 for(int len = 2;len &lt;= n;len++)&#123;// 枚举区间长度。 for(int l = 1;l &lt;= n - len + 1;l++)&#123;//枚举左端点。 int r = l + len - 1;//右端点。 for(int k = l;k &lt; r;k++)&#123; dp[l][r] = min(dp[l][r],dp[l][k] + dp[k + 1][r]);// 代表区间(l,r) 可以由 (l,k) + (k + 1,r) 转移。 &#125; if(c[l] == c[r])&#123;//当 a[l] = a[r]时。 if(l + 1 == r) dp[l][r] = 1;//若相邻,则需要一次操作。 dp[l][r] = min(dp[l][r],dp[l + 1][r - 1]);// (l,r) 当然可以由 (l + 1,r - 1) 转移。 &#125; &#125; &#125; cout &lt;&lt; dp[1][n] &lt;&lt; endl;&#125;]]></content>
+      <categories>
+        <category>Codeforces</category>
+      </categories>
+      <tags>
+        <tag>Codeforces</tag>
+        <tag>区间dp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Markdown 语法]]></title>
     <url>%2F2018%2F03%2F20%2FMarkdown-%E8%AF%AD%E6%B3%95%2F</url>
     <content type="text"><![CDATA[]]></content>
