@@ -38,7 +38,7 @@
       
       </description>
       
-      <content:encoded><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><img src="https://cdn.stocksnap.io/img-thumbs/280h/LPPN6E2YK4.jpg" alt="img"></p><a id="more"></a>]]></content:encoded>
+      <content:encoded><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><img src="https://cdn.stocksnap.io/img-thumbs/280h/LPPN6E2YK4.jpg" alt="img"></p><a id="more"></a><p><code>&lt;span id=&quot;inline-blue&quot;&gt; 站点配置文件 &lt;/span&gt;</code>         </p><p><span id="inline-blue"> 站点配置文件 </span></p><p><code>&lt;span id=&quot;inline-purple&quot;&gt; 主题配置文件 &lt;/span&gt;</code>     </p><p><span id="inline-purple"> 主题配置文件 </span></p><p><code>&lt;span id=&quot;inline-yellow&quot;&gt; 站点配置文件 &lt;/span&gt;</code>     </p><p><span id="inline-yellow"> 站点配置文件 </span></p><p><code>&lt;span id=&quot;inline-green&quot;&gt; 主题配置文件 &lt;/span&gt;</code>  </p><p>​     <span id="inline-green"> 主题配置文件 </span></p>]]></content:encoded>
       
       <comments>http://yoursite.com/2018/03/20/Markdown-%E8%AF%AD%E6%B3%95/#disqus_thread</comments>
     </item>
