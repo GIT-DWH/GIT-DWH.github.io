@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="天之界">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/87/10/thumb.jpg">
-<meta property="og:updated_time" content="2018-03-20T14:32:43.760Z">
+<meta property="og:updated_time" content="2018-03-21T01:33:58.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces-336-div2-D-Zuma">
 <meta name="twitter:image" content="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/87/10/thumb.jpg">
@@ -423,7 +423,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  572
+                  705
                 </span>
               
 
@@ -476,17 +476,23 @@
 <ul>
 <li><strong>转移方程</strong>：<ul>
 <li><strong>区间 $(i,j)$</strong> 可以由 <strong>区间 $(i,k)$</strong> + <strong>区间 $(k + 1,j)$</strong> 转移而来。</li>
-<li>当 $c[i]$ = $c[j]$ 时，<strong>区间 $(i,j)$</strong> 也可以由 <strong>区间$(i + 1,j - 1)$</strong> 转移而来。（需要注意的是：当 $i + 1 = j$ 时，直接 $dp[i][j]$ = 1，否则会出现 $i + 1 &gt; j - 1$ 的情况）</li>
+<li>当 $c[i]$ = $c[j]$ 时，<strong>区间 $(i,j)$</strong> 也可以由 <strong>区间 $(i + 1,j - 1)$</strong> 转移而来。（需要注意的是：当 $i + 1 = j$ 时，直接 $dp[i][j]$ = 1，否则会出现 $i + 1 &gt; j - 1$ 的情况）</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li><strong>小思考</strong>：为什么最外层是枚举 <strong>区间长度</strong>，而不是直接枚举 <strong>区间端点 $l,r$</strong> 呢？<ul>
+<li><strong>小思考1</strong>：为什么最外层是枚举 <strong>区间长度</strong>，而不是直接枚举 <strong>区间端点 $l,r$</strong> 呢？<ul>
 <li>答：因为我们转移的时候是从 <strong>小区间</strong> 转移到 <strong>大区间</strong> 的。</li>
 </ul>
 </li>
 </ul>
-<h2 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a>AC代码：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</span><br><span class="line"><span class="keyword">int</span> c[<span class="number">505</span>],dp[<span class="number">505</span>][<span class="number">505</span>];<span class="comment">// dp[i][j] : 完全删除区间 (i,j) 最少需要多少次操作？</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));<span class="comment">// 初始化为正无穷。</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++) <span class="built_in">cin</span> &gt;&gt; c[i], dp[i][i] = <span class="number">1</span>;<span class="comment">// 删除一个数时需要一次操作。</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> len = <span class="number">2</span>;len &lt;= n;len++)&#123;<span class="comment">// 枚举区间长度。</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> l = <span class="number">1</span>;l &lt;= n - len + <span class="number">1</span>;l++)&#123;<span class="comment">//枚举左端点。</span></span><br><span class="line">			<span class="keyword">int</span> r = l + len - <span class="number">1</span>;<span class="comment">//右端点。</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k = l;k &lt; r;k++)&#123;</span><br><span class="line">				dp[l][r] = min(dp[l][r],dp[l][k] + dp[k + <span class="number">1</span>][r]);</span><br><span class="line">                  <span class="comment">// 代表区间(l,r) 可以由 (l,k) + (k + 1,r) 转移。</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(c[l] == c[r])&#123;<span class="comment">//当 a[l] = a[r]时。</span></span><br><span class="line">				<span class="keyword">if</span>(l + <span class="number">1</span> == r) dp[l][r] = <span class="number">1</span>;<span class="comment">//若相邻,则需要一次操作。</span></span><br><span class="line">				dp[l][r] = min(dp[l][r],dp[l + <span class="number">1</span>][r - <span class="number">1</span>]);<span class="comment">// (l,r) 当然可以由 (l + 1,r - 1) 转移。</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; dp[<span class="number">1</span>][n] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>小思考2</strong>： 当 $c[i] = c[j]$ 时，为什么 <strong>区间</strong> $(i,j)$  是直接由 <strong>区间</strong> $(i + 1,j - 1) $ 转移而来，而不是由 <strong>区间</strong> $(i + 1, j - 1)$    $+ $   $1$  转移而来？<ul>
+<li>答：因为，若完全删除 <strong>区间</strong> $(i + 1,j - 1)$ 最少需要 $k$ 次操作，那么我们可以在前 $k - 1$ 次操作删掉 <strong>区间</strong> $(i + 1,j - 1)$ 的 $k - 1$ 部分，剩下的一部分可以与 $c[i],c[j]$ 形成一个回文串，最后再一起删掉,所以总操作次数还是 $k$ 次。</li>
+</ul>
+</li>
+</ul>
+<h2 id="AC代码："><a href="#AC代码：" class="headerlink" title="AC代码："></a><strong>AC</strong>代码：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</span><br><span class="line"><span class="keyword">int</span> c[<span class="number">505</span>],dp[<span class="number">505</span>][<span class="number">505</span>];<span class="comment">// dp[i][j] : 完全删除区间 (i,j) 最少需要多少次操作？</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));<span class="comment">// 初始化为正无穷。</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++) <span class="built_in">cin</span> &gt;&gt; c[i], dp[i][i] = <span class="number">1</span>;<span class="comment">// 删除一个数时需要一次操作。</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> len = <span class="number">2</span>;len &lt;= n;len++)&#123;<span class="comment">// 枚举区间长度。</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> l = <span class="number">1</span>;l &lt;= n - len + <span class="number">1</span>;l++)&#123;<span class="comment">//枚举左端点。</span></span><br><span class="line">			<span class="keyword">int</span> r = l + len - <span class="number">1</span>;<span class="comment">//右端点。</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k = l;k &lt; r;k++)&#123;</span><br><span class="line">				dp[l][r] = min(dp[l][r],dp[l][k] + dp[k + <span class="number">1</span>][r]);</span><br><span class="line">                  <span class="comment">// 代表区间(l,r) 可以由 (l,k) + (k + 1,r) 转移。</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(c[l] == c[r])&#123;<span class="comment">//当 a[l] = a[r]时。</span></span><br><span class="line">				<span class="keyword">if</span>(l + <span class="number">1</span> == r) dp[l][r] = <span class="number">1</span>;<span class="comment">//若相邻,则需要一次操作。</span></span><br><span class="line">				dp[l][r] = min(dp[l][r],dp[l + <span class="number">1</span>][r - <span class="number">1</span>]);<span class="comment">// (l,r) 当然可以由 (l + 1,r - 1) 转移。</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; dp[<span class="number">1</span>][n] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -516,7 +522,7 @@
   <p><span>本文标题:</span><a href="/2018/03/20/Codeforces-336-div2-D-Zuma/">Codeforces-336-div2-D-Zuma</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 DWH 的个人博客">DWH</a></p>
   <p><span>发布时间:</span>2018年03月20日 - 20:03</p>
-  <p><span>最后更新:</span>2018年03月20日 - 22:03</p>
+  <p><span>最后更新:</span>2018年03月21日 - 09:03</p>
   <p><span>原始链接:</span><a href="/2018/03/20/Codeforces-336-div2-D-Zuma/" title="Codeforces-336-div2-D-Zuma">http://yoursite.com/2018/03/20/Codeforces-336-div2-D-Zuma/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2018/03/20/Codeforces-336-div2-D-Zuma/"  aria-label="复制成功！"></i></span>
   </p>
@@ -784,7 +790,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">2.2k</span>
+    <span title="Site words total count">2.3k</span>
   
 </div>
 
