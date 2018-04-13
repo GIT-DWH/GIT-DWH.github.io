@@ -97,12 +97,12 @@
 <meta property="og:site_name" content="天之界">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/91/7/thumb.jpg">
-<meta property="og:image" content="c:/Users/GP62/AppData/Local/Temp/1523542686273.png">
-<meta property="og:image" content="c:/Users/GP62/AppData/Local/Temp/1523542705629.png">
-<meta property="og:image" content="c:/Users/GP62/AppData/Local/Temp/1523542723025.png">
-<meta property="og:image" content="c:/Users/GP62/AppData/Local/Temp/1523542766423.png">
-<meta property="og:image" content="c:/Users/GP62/AppData/Local/Temp/1523542801101.png">
-<meta property="og:updated_time" content="2018-04-13T00:49:02.192Z">
+<meta property="og:image" content="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_1.png?imageView2/2/w/1440/q/75/format/webp">
+<meta property="og:image" content="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_2.png?imageView2/2/w/1440/q/75/format/webp">
+<meta property="og:image" content="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_3.png?imageView2/2/w/1440/q/75/format/webp">
+<meta property="og:image" content="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_4.png?imageView2/2/w/1440/q/75/format/webp">
+<meta property="og:image" content="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_5.png?imageView2/2/w/1440/q/75/format/webp">
+<meta property="og:updated_time" content="2018-04-13T00:53:29.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="马拉车">
 <meta name="twitter:image" content="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/91/7/thumb.jpg">
@@ -432,9 +432,9 @@
       
         <script src="\assets\js\APlayer.min.js"> </script><p><img src="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/91/7/thumb.jpg" alt="img"></p>
 <a id="more"></a>
-<p>####一.算法过程分析</p>
-<p>由于回文分为偶回文（比如 $bccb$）和奇回文（比如 $bcacb$），而在处理奇偶问题上会比较繁琐，所以这里我们使用一个技巧，在字符间插入一个字符（前提这个字符未出现在串里）。举个例子：<code>s=&quot;abbahopxpo&quot;</code>，转换为<code>s_new=&quot;$#a#b#b#a#h#o#p#x#p#o#&quot;</code>（这里的字符 $ 只是为了防止越界，下面代码会有说明），如此，s 里起初有一个偶回文 <code>abba</code> 和一个奇回文 <code>opxpo</code>，被转换为 <code>#a#b#b#a#</code> 和 <code>#o#p#x#p#o#</code>，长度都转换成了奇数。</p>
+<h4 id="一-算法过程分析"><a href="#一-算法过程分析" class="headerlink" title="一.算法过程分析"></a>一.算法过程分析</h4><p>由于回文分为偶回文（比如 $bccb$）和奇回文（比如 $bcacb$），而在处理奇偶问题上会比较繁琐，所以这里我们使用一个技巧，在字符间插入一个字符（前提这个字符未出现在串里）。举个例子：<code>s=&quot;abbahopxpo&quot;</code>，转换为<code>s_new=&quot;$#a#b#b#a#h#o#p#x#p#o#&quot;</code>（这里的字符 $ 只是为了防止越界，下面代码会有说明），如此，s 里起初有一个偶回文 <code>abba</code> 和一个奇回文 <code>opxpo</code>，被转换为 <code>#a#b#b#a#</code> 和 <code>#o#p#x#p#o#</code>，长度都转换成了奇数。</p>
 <p>  定义一个辅助数组 <code>int p[]</code>， <code>p[i]</code> 表示以 <code>ma[i]</code>为中心的最长回文的半径，例如：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -510,20 +510,20 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>可以看出，<code>p[i]-1</code> 正好是原字符串中最长回文串的长度。</p>
-<p>####二.定义 R 为以 ma<code>[id]</code> 为中心的最长回文最右边界，也就是 <code>R = id + p[id]</code>。$j$ 与 $i$关于 $id$ 对称，根据回文的性质，<code>p[i]</code> 的值基于以下三种情况得出:</p>
-<pre><code>(1). $j$ 的回文串有一部分在 $id$  的**之外**，如下图：
-</code></pre><p><img src="C:\Users\GP62\AppData\Local\Temp\1523542686273.png" alt="1523542686273"></p>
+<h4 id="二-定义-R-为以-ma-id-为中心的最长回文最右边界，也就是-R-id-p-id-。-j-与-i-关于-id-对称，根据回文的性质，p-i-的值基于以下三种情况得出"><a href="#二-定义-R-为以-ma-id-为中心的最长回文最右边界，也就是-R-id-p-id-。-j-与-i-关于-id-对称，根据回文的性质，p-i-的值基于以下三种情况得出" class="headerlink" title="二.定义 R 为以 ma[id] 为中心的最长回文最右边界，也就是 R = id + p[id]。$j$ 与 $i$关于 $id$ 对称，根据回文的性质，p[i] 的值基于以下三种情况得出:"></a>二.定义 R 为以 ma<code>[id]</code> 为中心的最长回文最右边界，也就是 <code>R = id + p[id]</code>。$j$ 与 $i$关于 $id$ 对称，根据回文的性质，<code>p[i]</code> 的值基于以下三种情况得出:</h4><pre><code> (1). $j$ 的回文串有一部分在 $id$  的**之外**，如下图：
+</code></pre><p><img src="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_1.png?imageView2/2/w/1440/q/75/format/webp" alt="img"></p>
 <p>​    上图中，黑线为   $id$ 的回文，$i$ 与 $j$ 关于 $id$ 对称，红线为 $j$ 的回文。那么根据代码此时<code>p[i] = R-i</code>，即紫线。那么<code>p[i]</code> 还可以更大么？答案是不可能！见下图：</p>
-<p><img src="C:\Users\GP62\AppData\Local\Temp\1523542705629.png" alt="1523542705629"></p>
+<p><img src="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_2.png?imageView2/2/w/1440/q/75/format/webp" alt="img"></p>
 <p>假设右边新增的紫色部分是<code>p[i]</code>可以增加的部分，那么根据回文的性质，$a$ 等于 $d$ ，也就是说 $id$ 的回文不仅仅是黑线，而是黑线 + 两条紫线，矛盾，所以假设不成立，故<code>p[i] = R-i</code>，不可以再增加一分。</p>
 <p>  （2）j 回文串全部在 $id$ 的<strong>内部</strong>，如下图：</p>
-<p><img src="C:\Users\GP62\AppData\Local\Temp\1523542723025.png" alt="1523542723025"></p>
+<p><img src="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_3.png?imageView2/2/w/1440/q/75/format/webp" alt="img"></p>
 <p>此时<code>p[i] = p[j]</code>，那么<code>p[i]</code>还可以更大么？答案亦是不可能！见下图：</p>
-<p><img src="C:\Users\GP62\AppData\Local\Temp\1523542766423.png" alt="1523542766423"></p>
+<p><img src="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_4.png?imageView2/2/w/1440/q/75/format/webp" alt="img"></p>
 <p>假设右边新增的红色部分是<code>p[i]</code>可以增加的部分，那么根据回文的性质，$a$ 等于 $b $，也就是说 $j$ 的回文应该再加上 $a$ 和 $b$ ，矛盾，所以假设不成立，故<code>p[i] = p[j]</code>，也不可以再增加一分。</p>
 <p>  （3）$j$ 回文串左端正好与 $id$ 的回文串左端<strong>重合</strong>，见下图：</p>
-<p><img src="C:\Users\GP62\AppData\Local\Temp\1523542801101.png" alt="1523542801101"></p>
+<p><img src="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_5.png?imageView2/2/w/1440/q/75/format/webp" alt="img"></p>
 <p>此时<code>p[i] = p[j]</code> 或 <code>p[i] = R - i</code> ，并且<code>p[i]</code>  还可以继续增加，所以需要</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">while (ma[i - p[i]] == ma[i + p[i]]) </span><br><span class="line">    p[i]++;</span><br></pre></td></tr></table></figure>
 <p><strong>代码如下：</strong> </p>
@@ -639,8 +639,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -748,6 +757,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-算法过程分析"><span class="nav-number">1.</span> <span class="nav-text">一.算法过程分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-定义-R-为以-ma-id-为中心的最长回文最右边界，也就是-R-id-p-id-。-j-与-i-关于-id-对称，根据回文的性质，p-i-的值基于以下三种情况得出"><span class="nav-number">2.</span> <span class="nav-text">二.定义 R 为以 ma[id] 为中心的最长回文最右边界，也就是 R = id + p[id]。$j$ 与 $i$关于 $id$ 对称，根据回文的性质，p[i] 的值基于以下三种情况得出:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
