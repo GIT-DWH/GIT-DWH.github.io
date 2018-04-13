@@ -91,23 +91,21 @@
 
 
 
-<meta name="description" content="####一.算法过程分析 由于回文分为偶回文（比如 $bccb$）和奇回文（比如 $bcacb$），而在处理奇偶问题上会比较繁琐，所以这里我们使用一个技巧，在字符间插入一个字符（前提这个字符未出现在串里）。举个例子：s=&amp;quot;abbahopxpo&amp;quot;，转换为s_new=&amp;quot;$#a#b#b#a#h#o#p#x#p#o#&amp;quot;（这里的字符 $ 只是为了防止越界，下面代码会">
 <meta property="og:type" content="article">
 <meta property="og:title" content="马拉车">
 <meta property="og:url" content="http://yoursite.com/2018/04/11/马拉车/index.html">
 <meta property="og:site_name" content="天之界">
-<meta property="og:description" content="####一.算法过程分析 由于回文分为偶回文（比如 $bccb$）和奇回文（比如 $bcacb$），而在处理奇偶问题上会比较繁琐，所以这里我们使用一个技巧，在字符间插入一个字符（前提这个字符未出现在串里）。举个例子：s=&amp;quot;abbahopxpo&amp;quot;，转换为s_new=&amp;quot;$#a#b#b#a#h#o#p#x#p#o#&amp;quot;（这里的字符 $ 只是为了防止越界，下面代码会">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/91/7/thumb.jpg">
 <meta property="og:image" content="c:/Users/GP62/AppData/Local/Temp/1523542686273.png">
 <meta property="og:image" content="c:/Users/GP62/AppData/Local/Temp/1523542705629.png">
 <meta property="og:image" content="c:/Users/GP62/AppData/Local/Temp/1523542723025.png">
 <meta property="og:image" content="c:/Users/GP62/AppData/Local/Temp/1523542766423.png">
 <meta property="og:image" content="c:/Users/GP62/AppData/Local/Temp/1523542801101.png">
-<meta property="og:updated_time" content="2018-04-12T14:35:04.604Z">
+<meta property="og:updated_time" content="2018-04-13T00:49:02.192Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="马拉车">
-<meta name="twitter:description" content="####一.算法过程分析 由于回文分为偶回文（比如 $bccb$）和奇回文（比如 $bcacb$），而在处理奇偶问题上会比较繁琐，所以这里我们使用一个技巧，在字符间插入一个字符（前提这个字符未出现在串里）。举个例子：s=&amp;quot;abbahopxpo&amp;quot;，转换为s_new=&amp;quot;$#a#b#b#a#h#o#p#x#p#o#&amp;quot;（这里的字符 $ 只是为了防止越界，下面代码会">
-<meta name="twitter:image" content="c:/Users/GP62/AppData/Local/Temp/1523542686273.png">
+<meta name="twitter:image" content="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/91/7/thumb.jpg">
 
 
 
@@ -432,7 +430,9 @@
       
 
       
-        <script src="\assets\js\APlayer.min.js"> </script><p>####一.算法过程分析</p>
+        <script src="\assets\js\APlayer.min.js"> </script><p><img src="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/91/7/thumb.jpg" alt="img"></p>
+<a id="more"></a>
+<p>####一.算法过程分析</p>
 <p>由于回文分为偶回文（比如 $bccb$）和奇回文（比如 $bcacb$），而在处理奇偶问题上会比较繁琐，所以这里我们使用一个技巧，在字符间插入一个字符（前提这个字符未出现在串里）。举个例子：<code>s=&quot;abbahopxpo&quot;</code>，转换为<code>s_new=&quot;$#a#b#b#a#h#o#p#x#p#o#&quot;</code>（这里的字符 $ 只是为了防止越界，下面代码会有说明），如此，s 里起初有一个偶回文 <code>abba</code> 和一个奇回文 <code>opxpo</code>，被转换为 <code>#a#b#b#a#</code> 和 <code>#o#p#x#p#o#</code>，长度都转换成了奇数。</p>
 <p>  定义一个辅助数组 <code>int p[]</code>， <code>p[i]</code> 表示以 <code>ma[i]</code>为中心的最长回文的半径，例如：</p>
 <table>
