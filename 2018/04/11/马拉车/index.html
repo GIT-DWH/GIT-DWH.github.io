@@ -102,7 +102,7 @@
 <meta property="og:image" content="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_3.png?imageView2/2/w/1440/q/75/format/webp">
 <meta property="og:image" content="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_4.png?imageView2/2/w/1440/q/75/format/webp">
 <meta property="og:image" content="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_5.png?imageView2/2/w/1440/q/75/format/webp">
-<meta property="og:updated_time" content="2018-04-13T00:53:29.680Z">
+<meta property="og:updated_time" content="2018-07-08T00:43:13.211Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="马拉车">
 <meta name="twitter:image" content="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/91/7/thumb.jpg">
@@ -434,7 +434,6 @@
 <a id="more"></a>
 <h4 id="一-算法过程分析"><a href="#一-算法过程分析" class="headerlink" title="一.算法过程分析"></a>一.算法过程分析</h4><p>由于回文分为偶回文（比如 $bccb$）和奇回文（比如 $bcacb$），而在处理奇偶问题上会比较繁琐，所以这里我们使用一个技巧，在字符间插入一个字符（前提这个字符未出现在串里）。举个例子：<code>s=&quot;abbahopxpo&quot;</code>，转换为<code>s_new=&quot;$#a#b#b#a#h#o#p#x#p#o#&quot;</code>（这里的字符 $ 只是为了防止越界，下面代码会有说明），如此，s 里起初有一个偶回文 <code>abba</code> 和一个奇回文 <code>opxpo</code>，被转换为 <code>#a#b#b#a#</code> 和 <code>#o#p#x#p#o#</code>，长度都转换成了奇数。</p>
 <p>  定义一个辅助数组 <code>int p[]</code>， <code>p[i]</code> 表示以 <code>ma[i]</code>为中心的最长回文的半径，例如：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -510,10 +509,9 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>可以看出，<code>p[i]-1</code> 正好是原字符串中最长回文串的长度。</p>
-<h4 id="二-定义-R-为以-ma-id-为中心的最长回文最右边界，也就是-R-id-p-id-。-j-与-i-关于-id-对称，根据回文的性质，p-i-的值基于以下三种情况得出"><a href="#二-定义-R-为以-ma-id-为中心的最长回文最右边界，也就是-R-id-p-id-。-j-与-i-关于-id-对称，根据回文的性质，p-i-的值基于以下三种情况得出" class="headerlink" title="二.定义 R 为以 ma[id] 为中心的最长回文最右边界，也就是 R = id + p[id]。$j$ 与 $i$关于 $id$ 对称，根据回文的性质，p[i] 的值基于以下三种情况得出:"></a>二.定义 R 为以 ma<code>[id]</code> 为中心的最长回文最右边界，也就是 <code>R = id + p[id]</code>。$j$ 与 $i$关于 $id$ 对称，根据回文的性质，<code>p[i]</code> 的值基于以下三种情况得出:</h4><pre><code> (1). $j$ 的回文串有一部分在 $id$  的**之外**，如下图：
-</code></pre><p><img src="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_1.png?imageView2/2/w/1440/q/75/format/webp" alt="img"></p>
+<h4 id="二-定义-R-为以-ma-id-为中心的最长回文最右边界，也就是-R-id-p-id-。-j-与-i-关于-id-对称，根据回文的性质，p-i-的值基于以下三种情况得出"><a href="#二-定义-R-为以-ma-id-为中心的最长回文最右边界，也就是-R-id-p-id-。-j-与-i-关于-id-对称，根据回文的性质，p-i-的值基于以下三种情况得出" class="headerlink" title="二.定义 R 为以 ma[id] 为中心的最长回文最右边界，也就是 R = id + p[id]。$j$ 与 $i$关于 $id$ 对称，根据回文的性质，p[i] 的值基于以下三种情况得出:"></a>二.定义 R 为以 ma<code>[id]</code> 为中心的最长回文最右边界，也就是 <code>R = id + p[id]</code>。$j$ 与 $i$关于 $id$ 对称，根据回文的性质，<code>p[i]</code> 的值基于以下三种情况得出:</h4><p>​    (1). $j$ 的回文串有一部分在 $id$  的<strong>之外</strong>，如下图：</p>
+<p><img src="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_1.png?imageView2/2/w/1440/q/75/format/webp" alt="img"></p>
 <p>​    上图中，黑线为   $id$ 的回文，$i$ 与 $j$ 关于 $id$ 对称，红线为 $j$ 的回文。那么根据代码此时<code>p[i] = R-i</code>，即紫线。那么<code>p[i]</code> 还可以更大么？答案是不可能！见下图：</p>
 <p><img src="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_2.png?imageView2/2/w/1440/q/75/format/webp" alt="img"></p>
 <p>假设右边新增的紫色部分是<code>p[i]</code>可以增加的部分，那么根据回文的性质，$a$ 等于 $d$ ，也就是说 $id$ 的回文不仅仅是黑线，而是黑线 + 两条紫线，矛盾，所以假设不成立，故<code>p[i] = R-i</code>，不可以再增加一分。</p>
@@ -577,6 +575,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/20/AC自动机/" rel="prev" title="AC自动机">
+                AC自动机 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -668,7 +670,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -803,7 +805,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">4.5k</span>
+    <span title="Site words total count">13.4k</span>
   
 </div>
 
