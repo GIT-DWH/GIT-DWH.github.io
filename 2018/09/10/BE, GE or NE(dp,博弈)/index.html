@@ -91,20 +91,18 @@
 
 
 
-<meta name="description" content="题目链接：https://nanti.jisuanke.com/t/31454 题目大意：​    有两个人在玩游戏，他们最开始有积分 $m$ 分，如果最终的积分 $val&amp;gt;=k$，则进入 $Bad Ending$，如果最终积分 $val&amp;lt;l$ 则进入 $Good Ending$。现在一共有 $n$ 个关卡，每个选项有三个选项 $a,b,c$，$a$ 代表使得积分 $+a$，$b$">
 <meta name="keywords" content="dp,博弈">
 <meta property="og:type" content="article">
 <meta property="og:title" content="a">
 <meta property="og:url" content="http://yoursite.com/2018/09/10/BE, GE or NE(dp,博弈)/index.html">
 <meta property="og:site_name" content="天之界">
-<meta property="og:description" content="题目链接：https://nanti.jisuanke.com/t/31454 题目大意：​    有两个人在玩游戏，他们最开始有积分 $m$ 分，如果最终的积分 $val&amp;gt;=k$，则进入 $Bad Ending$，如果最终积分 $val&amp;lt;l$ 则进入 $Good Ending$。现在一共有 $n$ 个关卡，每个选项有三个选项 $a,b,c$，$a$ 代表使得积分 $+a$，$b$">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/111/8/thumb.jpg">
 <meta property="og:image" content="c:/Users/GP62/AppData/Local/Temp/1536588691655.png">
-<meta property="og:updated_time" content="2018-09-10T14:18:06.061Z">
+<meta property="og:updated_time" content="2018-09-15T15:21:12.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="a">
-<meta name="twitter:description" content="题目链接：https://nanti.jisuanke.com/t/31454 题目大意：​    有两个人在玩游戏，他们最开始有积分 $m$ 分，如果最终的积分 $val&amp;gt;=k$，则进入 $Bad Ending$，如果最终积分 $val&amp;lt;l$ 则进入 $Good Ending$。现在一共有 $n$ 个关卡，每个选项有三个选项 $a,b,c$，$a$ 代表使得积分 $+a$，$b$">
-<meta name="twitter:image" content="c:/Users/GP62/AppData/Local/Temp/1536588691655.png">
+<meta name="twitter:image" content="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/111/8/thumb.jpg">
 
 
 
@@ -451,9 +449,11 @@
       
 
       
-        <script src="\assets\js\APlayer.min.js"> </script><h2 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h2><p><a href="https://nanti.jisuanke.com/t/31454" target="_blank" rel="noopener">https://nanti.jisuanke.com/t/31454</a></p>
-<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>​    有两个人在玩游戏，他们最开始有积分 $m$ 分，如果最终的积分 $val&gt;=k$，则进入 $Bad Ending$，如果最终积分 $val&lt;l$ 则进入 $Good Ending$。现在一共有 $n$ 个关卡，每个选项有三个选项 $a,b,c$，$a$ 代表使得积分 $+a$，$b$ 代表使得积分 $+b$，$c==1$ 代表使得积分 $*(-1)$。如果 $a$ 或$ b$ 等于 $0$ ，则不能选择，题目保证 $a$，$b$，$c$ 不同时为$0$，$A$ 先选，$B$ 后选，$A$ 想要进入 $GE$，$B$ 想要进入 $BE$，他们都会进行最优的操作，问你最后的结局。</p>
-<h2 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h2><p>$1 \leq n \leq 10^3$</p>
+        <script src="\assets\js\APlayer.min.js"> </script><p><img src="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/111/8/thumb.jpg" alt="img"></p>
+<a id="more"></a>
+<h2 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h2><p><a href="https://nanti.jisuanke.com/t/31454" target="_blank" rel="noopener">https://nanti.jisuanke.com/t/31454</a></p>
+<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><pre><code>有两个人在玩游戏，他们最开始有积分 $m$ 分，如果最终的积分 $val&gt;=k$，则进入 $Bad Ending$，如果最终积分 $val&lt;l$ 则进入 $Good Ending$。现在一共有 $n$ 个关卡，每个选项有三个选项 $a,b,c$，$a$ 代表使得积分 $+a$，$b$ 代表使得积分 $+b$，$c==1$ 代表使得积分 $*(-1)$。如果 $a$ 或$ b$ 等于 $0$ ，则不能选择，题目保证 $a$，$b$，$c$ 不同时为$0$，$A$ 先选，$B$ 后选，$A$ 想要进入 $GE$，$B$ 想要进入 $BE$，他们都会进行最优的操作，问你最后的结局。
+</code></pre><h2 id="数据范围："><a href="#数据范围：" class="headerlink" title="数据范围："></a>数据范围：</h2><p>$1 \leq n \leq 10^3$</p>
 <p>$-100 \leq m,k,l \leq 100$</p>
 <p>$0 \leq a,b $</p>
 <p>$0 \leq c \leq 1$</p>
