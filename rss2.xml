@@ -8,8 +8,24 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>踏一步便是虚无</description>
-    <pubDate>Sat, 15 Sep 2018 15:41:00 GMT</pubDate>
+    <pubDate>Tue, 25 Sep 2018 14:15:36 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>产生随机数</title>
+      <link>http://yoursite.com/2018/09/25/%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E6%95%B0/</link>
+      <guid>http://yoursite.com/2018/09/25/%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E6%95%B0/</guid>
+      <pubDate>Tue, 25 Sep 2018 14:10:26 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;&lt;img src=&quot;http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/114/4/thumb.jpg&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;
+      
+      </description>
+      
+      <content:encoded><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><img src="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/114/4/thumb.jpg" alt="img"></p><a id="more"></a><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line">srand(time(<span class="literal">NULL</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a = (<span class="number">1.0</span> * rand() / RAND_MAX) * n + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>]]></content:encoded>
+      
+      <comments>http://yoursite.com/2018/09/25/%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E6%95%B0/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>弦图与区间图</title>
@@ -153,22 +169,6 @@
       <content:encoded><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><img src="http://ppe.oss-cn-shenzhen.aliyuncs.com/palette/42077/1519635636227/thumb_Mon_Feb_26_2018.jpg" alt="img"></p><a id="more"></a><h2 id="公式为"><a href="#公式为" class="headerlink" title="公式为:"></a>公式为:</h2><p>$  \frac{n!}{(k_1)! (k_2)! … (k_p)!}  $</p><p>$n$ : 串长度</p><p>$k_i$ : 串中第 $i$ 种元素出现的次数</p><p>$p$ : 串中不同元素的个数</p><h2 id="例如："><a href="#例如：" class="headerlink" title="例如："></a>例如：</h2><h3 id="串为-abac-求串的去重全排列的个数"><a href="#串为-abac-求串的去重全排列的个数" class="headerlink" title="串为 $abac$ , 求串的去重全排列的个数"></a>串为 $abac$ , 求串的去重全排列的个数</h3><ul><li><p>串的长度为 $4$ , 所以 $n$ $=$ $4$</p></li><li><p>在这个串中，一共有 $3$ 种元素，分别为 $a$ , $b$ , $c$ 所以 $p$ $=$ $3$.</p></li><li>元素 $a$ 出现 $2$ 次,所以 $k_1$ $=$ $2$ </li><li>元素 $b$ 出现 $1$ 次,所以 $k_2$ $=$ $1$</li><li>元素 $c$ 出现 $1$ 次,所以 $k_3$ $=$ $1$ </li></ul><p>所以去重全排列个数为：$\frac{4!}{(2)! <em> (1)! </em> (1)! }$ $=$ $12$ </p><h4 id="去重全排列如下："><a href="#去重全排列如下：" class="headerlink" title="去重全排列如下："></a>去重全排列如下：</h4><p><code>1.aabc</code></p><p><code>2.aacb</code></p><p><code>3.abac</code></p><p><code>4.abca</code></p><p><code>5.acab</code></p><p><code>6.acba</code></p><p><code>7.cbaa</code></p><p><code>8.bcaa</code></p><p><code>9.caba</code></p><p><code>10.acba</code></p><p><code>11.baca</code></p><p><code>12.abca</code></p>]]></content:encoded>
       
       <comments>http://yoursite.com/2018/07/08/%E5%8E%BB%E9%87%8D%E5%85%A8%E6%8E%92%E5%88%97/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>dfs序模板</title>
-      <link>http://yoursite.com/2018/07/08/dfs%E5%BA%8F%E6%A8%A1%E6%9D%BF/</link>
-      <guid>http://yoursite.com/2018/07/08/dfs%E5%BA%8F%E6%A8%A1%E6%9D%BF/</guid>
-      <pubDate>Sun, 08 Jul 2018 06:47:40 GMT</pubDate>
-      <description>
-      
-        &lt;p&gt;&lt;img src=&quot;http://ppe.oss-cn-shenzhen.aliyuncs.com/palette/210541/1531033503381/thumb_Sun_Jul_08_2018.jpg&quot; alt=&quot;img&quot;&gt;&lt;/p&gt;
-      
-      </description>
-      
-      <content:encoded><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p><img src="http://ppe.oss-cn-shenzhen.aliyuncs.com/palette/210541/1531033503381/thumb_Sun_Jul_08_2018.jpg" alt="img"></p><a id="more"></a><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;G[maxn];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> in[maxn],out[maxn],d[maxn];</span><br><span class="line"><span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> pre,<span class="keyword">int</span> deep)</span></span>&#123;</span><br><span class="line">    in[x] = ++tot;</span><br><span class="line">    d[x] = deep;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; G[x].size();i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = G[x][i];</span><br><span class="line">        <span class="keyword">if</span>(v != pre) dfs(v,x,deep + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    out[x] = tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= m;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> x,y;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        G[x].push_back(y);</span><br><span class="line">        G[y].push_back(x);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>,i,in[i],out[i]);<span class="comment">//节点i的子树的编号</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content:encoded>
-      
-      <comments>http://yoursite.com/2018/07/08/dfs%E5%BA%8F%E6%A8%A1%E6%9D%BF/#disqus_thread</comments>
     </item>
     
   </channel>

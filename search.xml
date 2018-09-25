@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[产生随机数]]></title>
+    <url>%2F2018%2F09%2F25%2F%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[12345#include&lt;ctime&gt;srand(time(NULL));int a = (1.0 * rand() / RAND_MAX) * n + 1;]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随机数</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[弦图与区间图]]></title>
     <url>%2F2018%2F09%2F15%2F%E5%BC%A6%E5%9B%BE%E4%B8%8E%E5%8C%BA%E9%97%B4%E5%9B%BE%2F</url>
     <content type="text"><![CDATA[诱导子图：若选择了某些点，要把在原图上与这些点有相连的边都包含。 团：是G的一个子图，完全图，也就是两两点有连边。 极大团：不是其它团的子集。 最大团 W(G)：顶点最多的极大团。 最小染色 X(G):用最少的颜色给点染色使得相邻点颜色不同。 最大独立集 α(G)：最大的一个点的子集使得任何两个点不相邻。 最小团覆盖 K(G)：用最少个数的团覆盖所有的点。 W(G) &lt;= X(G) (普通图)α(G) &lt;= K(G) (普通图)W(G) == X(G) (弦图) 最大团数 = 最小色数α(G) == K(G) (弦图) 最大独立集 = 最小团覆盖弦：连接环中不相邻的两个点的边。 弦图：一个无向图称为弦图，当图中任意长度大于3的环都至少有一个弦。 单纯点：若一个点加上它相邻的点的诱导子图为一个团，则这个点为单纯点。 引理：任何一个弦图都至少有一个单纯点，不是完全图的弦图至少有两个不相邻的单纯点。 完美消除序列：对与序列中的点vi，排在vi后面并且和vi相连的点是一个团 定理：一个无向图是弦图当且仅当它有一个完美消除序列。 完美消除序列的作用：求弦图的最大团数/最小色数的时候，只要在完美消除序列上从后往前贪心染色即可。 而求最大独立集/最小团覆盖的时候，只要在完美消除序列上从前往后贪心取点即可。]]></content>
@@ -193,8 +204,8 @@
         <category>DP</category>
       </categories>
       <tags>
-        <tag>HDU</tag>
         <tag>完全背包</tag>
+        <tag>HDU</tag>
       </tags>
   </entry>
   <entry>
@@ -205,9 +216,9 @@
         <category>DP</category>
       </categories>
       <tags>
+        <tag>HDU</tag>
         <tag>浮点数</tag>
         <tag>一维dp</tag>
-        <tag>HDU</tag>
       </tags>
   </entry>
   <entry>
