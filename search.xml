@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hdu 4578 Transformation(区间加值,区间乘值,区间赋值,查询区间的p次方)]]></title>
+    <url>%2F2018%2F10%2F17%2FHDU%204578%20Transformation(%E5%8C%BA%E9%97%B4%E5%8A%A0%E5%80%BC%2C%E5%8C%BA%E9%97%B4%E4%B9%98%E5%80%BC%2C%E5%8C%BA%E9%97%B4%E8%B5%8B%E5%80%BC%2C%E6%9F%A5%E8%AF%A2%E5%8C%BA%E9%97%B4%E7%9A%84p%E6%AC%A1%E6%96%B9)%2F</url>
+    <content type="text"><![CDATA[题目链接：http://acm.hdu.edu.cn/showproblem.php?pid=4578 题意：给你一个数组，初始值为零，有四种操作： （1）”1 x y c”,代表 把区间 $[x,y]$ 上的值全部加c。 （2）”2 x y c”,代表 把区间 $[x,y]$ 上的值全部乘以 $c$。 （3）”3 x y c” 代表 把区间 $[x,y]$上的值全部赋值为 $c$。 （4）”4 x y p” 代表 求区间 $[x,y]$ 上值的p次方和 $1&lt;=p&lt;=3$。 样例：$input$ 12345675 53 3 5 71 2 4 44 1 5 22 2 5 84 3 5 30 0 $output$ 123077489 解题思路：首先先解决一个区间内可能同时出现+和的操作的问题(如果出现赋值,则在赋值之前的+和都是无效的),我们可以把加法累计起来,把乘法先处理了,比如说原来 $[l,r]$ 这一段上有了 $+x$ ,现在要求 $y$,我们可以先把原来的每个数乘以y,然后加上 $xy$,即都是先处理乘法,在处理加法。 然后处理一下区间查询的问题,假设原来的值是k,如果是乘法或者赋值的话,$sumv1,sumv2,sumv3$的修改是很容易实现的,如果是加, $(p+k)^3=p^3+3p^2k+3k^2p+k^3$, 所以 $sumv3[rt]=sumv3[rt]+sumv2[rt]3k+sumv1[rt]3k+(r-l+1)*k^3$,同理二次方的修改也是如此 AC代码:123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143#include&lt;bits/stdc++.h&gt;using namespace std;#define lson l,mid,rt&lt;&lt;1#define rson mid+1,r,rt&lt;&lt;1|1const int maxn=110100;typedef long long ll;const int MOD=10007;ll sumv1[maxn*4],sumv2[maxn*4],sumv3[maxn*4],v,op,setv[maxn*4],mul[4*maxn],addv[4*maxn];int L,R; void build(int l,int r,int rt)&#123; sumv1[rt]=0,sumv2[rt]=0,sumv3[rt]=0; setv[rt]=addv[rt]=mul[rt]=0; if(l==r) return ; int mid=(l+r)&gt;&gt;1; build(lson); build(rson);&#125; void pushup(int rt)&#123; sumv1[rt]=(sumv1[rt&lt;&lt;1]+sumv1[rt&lt;&lt;1|1])%MOD; sumv2[rt]=(sumv2[rt&lt;&lt;1]+sumv2[rt&lt;&lt;1|1])%MOD; sumv3[rt]=(sumv3[rt&lt;&lt;1]+sumv3[rt&lt;&lt;1|1])%MOD;&#125; void change(int op,int rt,int l,int r,ll k)&#123; if(op==1)&#123; sumv3[rt]=(sumv3[rt]+sumv2[rt]*3*k+3*k*k*sumv1[rt]%MOD+k*k*k%MOD*(r-l+1))%MOD; sumv2[rt]=(sumv2[rt]+k*k*(r-l+1)+2*k*sumv1[rt])%MOD; sumv1[rt]=(sumv1[rt]+k*(r-l+1))%MOD; &#125; else if(op==2)&#123; sumv3[rt]=sumv3[rt]*(k*k*k%MOD)%MOD; sumv2[rt]=sumv2[rt]*k*k%MOD; sumv1[rt]=sumv1[rt]*k%MOD; &#125; else&#123; sumv3[rt]=(k*k*k%MOD)*(r-l+1)%MOD; sumv2[rt]=k*k*(r-l+1)%MOD; sumv1[rt]=k*(r-l+1)%MOD; &#125;&#125; void pushdown(int rt,int l,int r)&#123; if(setv[rt]!=0)&#123; int mid=(l+r)&gt;&gt;1; change(3,rt&lt;&lt;1,l,mid,setv[rt]); change(3,rt&lt;&lt;1|1,mid+1,r,setv[rt]); setv[rt&lt;&lt;1]=setv[rt&lt;&lt;1|1]=setv[rt]; addv[rt&lt;&lt;1]=addv[rt&lt;&lt;1|1]=0; mul[rt&lt;&lt;1]=mul[rt&lt;&lt;1|1]=0; setv[rt]=0; &#125; if(mul[rt]!=0)&#123; int mid=(l+r)&gt;&gt;1; change(2,rt&lt;&lt;1,l,mid,mul[rt]); change(2,rt&lt;&lt;1|1,mid+1,r,mul[rt]); if(mul[rt&lt;&lt;1]==0) mul[rt&lt;&lt;1]=mul[rt]; else mul[rt&lt;&lt;1]=mul[rt&lt;&lt;1]*mul[rt]%MOD; if(mul[rt&lt;&lt;1|1]==0) mul[rt&lt;&lt;1|1]=mul[rt]; else mul[rt&lt;&lt;1|1]=mul[rt&lt;&lt;1|1]*mul[rt]%MOD; addv[rt&lt;&lt;1]=addv[rt&lt;&lt;1]*mul[rt]%MOD; addv[rt&lt;&lt;1|1]=addv[rt&lt;&lt;1|1]*mul[rt]%MOD; mul[rt]=0; &#125; if(addv[rt]!=0)&#123; int mid=(l+r)&gt;&gt;1; change(1,rt&lt;&lt;1,l,mid,addv[rt]); change(1,rt&lt;&lt;1|1,mid+1,r,addv[rt]); addv[rt&lt;&lt;1]=(addv[rt&lt;&lt;1]+addv[rt])%MOD; addv[rt&lt;&lt;1|1]=(addv[rt&lt;&lt;1|1]+addv[rt])%MOD; addv[rt]=0; &#125;&#125; void update(int l,int r,int rt)&#123; if(L&lt;=l&amp;&amp;R&gt;=r)&#123; if(op==3)&#123; setv[rt]=v,mul[rt]=0,addv[rt]=0; change(op,rt,l,r,v); &#125; else if(op==2)&#123; if(mul[rt]==0) mul[rt]=v; else mul[rt]=mul[rt]*v%MOD; addv[rt]=addv[rt]*v%MOD; change(op,rt,l,r,v); &#125; else&#123; addv[rt]=(addv[rt]+v)%MOD; change(op,rt,l,r,v); &#125; return ; &#125; pushdown(rt,l,r); int mid=(l+r)&gt;&gt;1; if(L&lt;=mid) update(lson); if(R&gt;mid) update(rson); pushup(rt);&#125; ll query(int l,int r,int rt)&#123; if(L&lt;=l&amp;&amp;R&gt;=r)&#123; if(v==1) return sumv1[rt]; if(v==2) return sumv2[rt]; return sumv3[rt]; &#125; pushdown(rt,l,r); int mid=(l+r)&gt;&gt;1; ll ans=0; if(L&lt;=mid) ans+=query(lson); if(R&gt;mid) ans+=query(rson); return ans;&#125; int main()&#123; int n,m; while(scanf("%d%d",&amp;n,&amp;m)!=EOF)&#123; if(n==0&amp;&amp;m==0) break; build(1,n,1); for(int i=1;i&lt;=m;i++)&#123; scanf("%d%d%d%lld",&amp;op,&amp;L,&amp;R,&amp;v); if(op==4) printf("%lld\n",query(1,n,1)%MOD); else update(1,n,1); &#125; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>线段树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Deque(双端队列)]]></title>
+    <url>%2F2018%2F10%2F17%2FDeque(%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97)%2F</url>
+    <content type="text"><![CDATA[声明deque容器123456#include&lt;deque&gt; // 头文件deque&lt;type&gt; deq; // 声明一个元素类型为type的双端队列quedeque&lt;type&gt; deq(size); // 声明一个类型为type、含有size个默认值初始化元素的的双端队列quedeque&lt;type&gt; deq(size, value); // 声明一个元素类型为type、含有size个value元素的双端队列quedeque&lt;type&gt; deq(mydeque); // deq是mydeque的一个副本deque&lt;type&gt; deq(first, last); // 使用迭代器first、last范围内的元素初始化deq deque的常用成员函数123456789deque&lt;int&gt; deq;deq[ ]：用来访问双向队列中单个的元素。deq.front()：返回第一个元素的引用。deq.back()：返回最后一个元素的引用。deq.push_front(x)：把元素x插入到双向队列的头部。deq.pop_front()：弹出双向队列的第一个元素。deq.push_back(x)：把元素x插入到双向队列的尾部。deq.pop_back()：弹出双向队列的最后一个元素。]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Codeforces - gym - 101808 - I. Ildar Yalalov (博弈，dp)]]></title>
     <url>%2F2018%2F10%2F02%2FCodeforces%20-%20gym%20-%20101808%20-%20I.%20Ildar%20Yalalov%20(%E5%8D%9A%E5%BC%88%EF%BC%8Cdp)%2F</url>
     <content type="text"><![CDATA[题目链接：http://codeforces.com/gym/101808/problem/I 题意：T 组数据 有 $n$ 堆石子，第 $i$ 堆有 $A_i$ 个石子，$Yalalov$ 和 $Shin$ 两人轮流拿，总共有 $2$ 种操作： 选任意一堆石子，拿走这堆石子中的一个石子。 拿走每一堆石子中的一个石子（当所有堆石子个数大于等于 $1$ 时，才能选择此操作） 如果当前轮，拿不了石子时，处在当前轮的人算输。 问：当 $Yalalov$ 先手时，最后谁赢？ 数据范围： $1 ≤ N ≤ 100$ $1 ≤ A_i ≤ 10^6$ 样例：$input$ 123121 2 $output$ 1Yalalov 解题思路：这道题可以看做两部分： 上部分 下部分 所以状态为： $dp[maxn][5]$ ; 底下为i层，上面石子总数为0，奇数，偶数时的获胜状态。 AC代码：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long LL;typedef unsigned long long ULL;#define pb push_back#define debug(x) cout &lt;&lt; #x &lt;&lt; " = " &lt;&lt; x &lt;&lt; endl#define rep(i,a,n) for(int i = a;i &lt;= n;i++)#define per(i,n,a) for(int i = n;i &gt;= a;i--)const int INF_INT = 0x3f3f3f3f;const long long INF_LL = 0x7fffffff;const int maxn = 1e6 + 5;int dp[maxn][5]; // 底下为i层，上面石子总数为0，奇数，偶数时的获胜状态。int a[105];int n;/*22 3 11 11 1*/int Get(int x)&#123; if(!x) return 0; return x &amp; 1 == 1 ? 1 : 2;&#125;int Solve(int deep,int x)&#123; // 把所有状态转移都写出来，也就是看下一层是否有必败态。 if(dp[deep][x] != 0) return dp[deep][x]; dp[deep][x] = 1; // 初始都为必败态，只要下面有一个必败态就赢。 if(deep - 1 &gt;= 0)&#123; if(Solve(deep - 1,x) == 1) dp[deep][x] = 2; int tmp = x + n - 1; if(Solve(deep - 1,Get(tmp)) == 1) dp[deep][x] = 2; &#125; if(x &gt; 0) if(Solve(deep,x - 1) == 1) dp[deep][x] = 2; return dp[deep][x];&#125;int main()&#123; int t; scanf("%d",&amp;t); while(t--)&#123; int mi = maxn, tot = 0; scanf("%d",&amp;n); rep(i,1,n) scanf("%d",&amp;a[i]), mi = min(mi,a[i]); dp[0][0] = 1, dp[0][1] = 2, dp[0][2] = 1; rep(i,1,n) tot += a[i] - mi; Solve(mi,Get(tot)) == 2 ? printf("Yalalov\n") : printf("Shin\n"); rep(i,0,mi) rep(j,0,2) dp[i][j] = 0; &#125; return 0;&#125;]]></content>
@@ -216,9 +232,9 @@
         <category>DP</category>
       </categories>
       <tags>
-        <tag>HDU</tag>
         <tag>01背包</tag>
         <tag>逆向思维</tag>
+        <tag>HDU</tag>
       </tags>
   </entry>
   <entry>
@@ -253,9 +269,9 @@
         <category>DP</category>
       </categories>
       <tags>
+        <tag>HDU</tag>
         <tag>浮点数</tag>
         <tag>一维DP</tag>
-        <tag>HDU</tag>
       </tags>
   </entry>
   <entry>
