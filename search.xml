@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Codeforces - gym - 101873 - C.Joyride!(Dijkstra+状态转移)]]></title>
+    <url>%2F2018%2F10%2F29%2FCodeforces%20-%20gym%20-%20101873%20-%20C.Joyride!(Dijkstra%2B%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB)%2F</url>
+    <content type="text"><![CDATA[题目链接：https://codeforces.com/gym/101873/problem/C 题意： 给你一副无向图，有 $n$ 个点，第 $i$ 个点花费时间为 $t_i$ 和 花费价钱为 $p_i$ $m$ 条边，经过每条边的花费时间都为 $t$ 问：从 $1$ 点出发，最后回到 $1$ 点时花费时间恰好为 $x$ ，最少花费价钱为多少？（可以在同一个点不动，但还是要花费时间和价钱，只要经过就花），如果不能恰好到达 $1$ 点，就输出 $It$ $is$ $a$ $trap.$ 数据范围： $1 &lt;= x &lt;= 1000$ $1 &lt;= n,m &lt;= 1000$ $1 &lt;= t &lt;= 1000 $ 样例：$input$ 12345678910111213141516171819202144 4 11 22 33 44 11 22 15 43 364 4 11 22 33 44 11 22 15 43 3 $output$ 12385 解题思路：因为题目要求最小花费价钱，所以第一反应就要想到跑个最短路。那么现在的问题就是这么解决每个点的状态？ 因为 $x$ 不超过 $1000$ ，我们可以把每个点的状态设为：$dp[i][j]$ 当在第 $i$ 点，花费时间为 $j$ 时的最少花费价钱。 然后我们就可以按照 $Dijkstra$ 转移了。(但这个复杂度我不太清楚这么算……) AC代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105#include&lt;cstdio&gt;#include&lt;map&gt;#include&lt;algorithm&gt;#include&lt;cmath&gt;#include&lt;cstring&gt;#include&lt;vector&gt;#include&lt;queue&gt;using namespace std;typedef long long LL;const int inf = 1 &lt;&lt; 30;const int maxn = 1e3;struct Node&#123; int id,x,cost; Node () &#123;&#125; Node (int _id,int _x,int _cost)&#123; id = _id; x = _x; cost = _cost; &#125; bool friend operator &lt; (Node a,Node b)&#123; return a.cost &gt; b.cost; &#125;&#125;;int dp[2 * maxn + 5][maxn + 5];vector&lt;int&gt; G[maxn];int t[2 * maxn + 5],p[2 * maxn + 5];int T,n,m,X;void Init(int s)&#123; for(int i = 0;i &lt;= 2 * n;i++)&#123; for(int j = 0;j &lt;= X;j++)&#123; dp[i][j] = inf; &#125; &#125; dp[s][t[s]] = p[s];&#125;void Dijstra(int s)&#123; Init(s); priority_queue&lt;Node&gt; pq; pq.push(Node(s,t[s],p[s])); while(!pq.empty())&#123; Node now = pq.top(); pq.pop(); for(int i = 0;i &lt; G[now.id].size();i++)&#123; int tmp; int v = G[now.id][i]; if(abs(v - now.id) == n) tmp = 0; else tmp = T; tmp = now.x + tmp + t[v]; //printf("tmp = %d ,v = %d\n",tmp,v); //printf("** %d\n",dp[v][tmp]); //printf("%d %d %d %d\n",now.id,now.x,p[v],dp[now.id][now.x] + p[v]); if(tmp &lt;= X &amp;&amp; dp[v][tmp] &gt; dp[now.id][now.x] + p[v])&#123; dp[v][tmp] = dp[now.id][now.x] + p[v]; pq.push(Node(v,tmp,dp[v][tmp])); &#125; &#125; &#125;&#125;bool vis[2 * maxn + 5][2 * maxn + 5];int main()&#123; scanf("%d",&amp;X); scanf("%d %d %d",&amp;n,&amp;m,&amp;T); for(int i = 1;i &lt;= m;i++)&#123; int u,v; scanf("%d %d",&amp;u,&amp;v); G[u].push_back(v); G[v].push_back(u); &#125; for(int i = 1;i &lt;= n;i++)&#123; scanf("%d %d",&amp;t[i],&amp;p[i]); t[i + n] = t[i]; p[i + n] = p[i]; &#125; for(int i = 1;i &lt;= n;i++)&#123; for(int j = 0;j &lt; G[i].size();j++)&#123; int tmp = G[i][j]; if(vis[i + n][tmp] == 0)&#123; G[i + n].push_back(tmp); G[tmp].push_back(i + n); vis[i + n][tmp] = 1; vis[tmp][i + n] = 1; &#125; if(vis[i + n][tmp + n] == 0)&#123; G[i + n].push_back(tmp + n); G[tmp + n].push_back(i + n); vis[i + n][tmp + n] = 1; vis[tmp + n][i + n] = 1; &#125; &#125; G[i].push_back(i + n); G[i + n].push_back(i); &#125; Dijstra(1); int mi = inf; mi = min(mi,dp[1][X]); mi = min(mi,dp[1 + n][X]); if(mi == inf) printf("It is a trap.\n"); else printf("%d\n",mi);&#125;]]></content>
+      <categories>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>最短路</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[set的用法(C++)]]></title>
     <url>%2F2018%2F10%2F28%2Fset%E7%9A%84%E7%94%A8%E6%B3%95(C%2B%2B)%2F</url>
     <content type="text"><![CDATA[set 的函数调用12345678910111213141516171819202122232425262728293031323334353637c++ stl容器set成员函数:begin()--返回指向第一个元素的迭代器c++ stl容器set成员函数:clear()--清除所有元素c++ stl容器set成员函数:count()--返回某个值元素的个数c++ stl容器set成员函数:empty()--如果集合为空，返回truec++ stl容器set成员函数:end()--返回指向最后一个元素的迭代器c++ stl容器set成员函数:equal_range()--返回集合中与给定值相等的上下限的两个迭代器c++ stl容器set成员函数:erase()--删除集合中的元素c++ stl容器set成员函数:find()--返回一个指向被查找到元素的迭代器c++ stl容器set成员函数:get_allocator()--返回集合的分配器c++ stl容器set成员函数:insert()--在集合中插入元素c++ stl容器set成员函数:lower_bound()--返回指向大于（或等于）某值的第一个元素的迭代器c++ stl容器set成员函数:key_comp()--返回一个用于元素间值比较的函数c++ stl容器set成员函数:max_size()--返回集合能容纳的元素的最大限值c++ stl容器set成员函数:rbegin()--返回指向集合中最后一个元素的反向迭代器c++ stl容器set成员函数:rend()--返回指向集合中第一个元素的反向迭代器c++ stl容器set成员函数:size()--集合中元素的数目c++ stl容器set成员函数:swap()--交换两个集合变量c++ stl容器set成员函数:upper_bound()--返回大于某个值元素的迭代器c++ stl容器set成员函数:value_comp()--返回一个用于比较元素间的值的函数 c++ stl集合set插入,遍历用法举例1234567891011121314151617181920#include&lt;iostream&gt; #include&lt;set&gt; using namespace std; //set插入元素操作 int main() &#123; //定义一个int型集合对象s,当前没有任何元素.由www.169it.com搜集整理 set&lt;int&gt; s; s.insert(8); //第一次插入8，可以插入 s.insert(1); s.insert(12); s.insert(6); s.insert(8); //第二次插入8，重复元素，不会插入 set&lt;int&gt;::iterator it; //定义前向迭代器 //中序遍历集合中的所有元素 for(it=s.begin();it!=s.end();it++) cout&lt;&lt;*it&lt;&lt;endl; system("pause"); return 0; &#125;]]></content>
@@ -23,7 +34,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Codeforces - gym - 101873 - Problem G.Water Testing (几何，皮克定理)]]></title>
+    <title><![CDATA[Codeforces - gym - 101873 - G.Water Testing (几何，皮克定理)]]></title>
     <url>%2F2018%2F10%2F28%2FCodeforces%20-%20gym%20-%20101873%20-%20Problem%20G.Water%20Testing%20(%E5%87%A0%E4%BD%95%EF%BC%8C%E7%9A%AE%E5%85%8B%E5%AE%9A%E7%90%86)%2F</url>
     <content type="text"><![CDATA[题目链接：http://codeforces.com/gym/101873/problem/G 题意：顺时针给你一些点，问由给你的点围起来的多边形内有多少个整数点？ 数据范围： $3 &lt;= n &lt;= 100000$ $-1e6 &lt;= x_i,y_i &lt;= 1e6$ 样例：$input$ 1234540 00 1010 1010 0 $output$ 181 解题思路：模板题 AC代码：12345678910111213141516171819202122232425262728293031#include &lt;bits/stdc++.h&gt;using namespace std;const int Max = 2e5+10;typedef long long ll;#define rep(i,s,n) for(ll i=s;i&lt;=n;i++)#define per(i,n,s) for(ll i=n;i&gt;=s;i--)struct node&#123; ll x,y;&#125;p[Max];ll gcd(ll a, ll b)&#123; return b==0 ? a : gcd (b,a%b);&#125;//皮克定理:多边形的面积 = 多边形内部整点的个数 + 边上正点的个数 / 2 - 1；int main()&#123; int n; scanf("%d",&amp;n); rep(i,0,n-1)&#123; scanf("%lld %lld",&amp;p[i].x,&amp;p[i].y); &#125; ll sum=0; rep(i,0,n-1)&#123; sum+=(p[(i+1)%n].y)*(p[i].x-p[(i+2)%n].x); &#125;//这是在求多边形的面积； ll ans=0; rep(i,0,n-1)&#123; ans+=gcd(abs(p[i].x-p[(i+1)%n].x),abs(p[i].y-p[(i+1)%n].y)); &#125;//这是在求边界上面的点 sum=abs(sum); sum=(sum-ans)/2+1; printf("%lld\n",sum); return 0;&#125;]]></content>
       <categories>
@@ -87,9 +98,9 @@
         <category>博弈</category>
       </categories>
       <tags>
-        <tag>Codeforces</tag>
         <tag>DP</tag>
         <tag>博弈</tag>
+        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -319,8 +330,8 @@
         <category>DP</category>
       </categories>
       <tags>
-        <tag>完全背包</tag>
         <tag>HDU</tag>
+        <tag>完全背包</tag>
       </tags>
   </entry>
   <entry>
@@ -331,9 +342,9 @@
         <category>DP</category>
       </categories>
       <tags>
-        <tag>HDU</tag>
         <tag>浮点数</tag>
         <tag>一维DP</tag>
+        <tag>HDU</tag>
       </tags>
   </entry>
   <entry>
@@ -401,8 +412,8 @@
         <category>图论</category>
       </categories>
       <tags>
-        <tag>Dijkstra</tag>
         <tag>最短路</tag>
+        <tag>Dijkstra</tag>
         <tag>模板</tag>
       </tags>
   </entry>
