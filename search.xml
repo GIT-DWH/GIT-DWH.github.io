@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Codeforces - gym - 101550 - A.Artwork(并查集)]]></title>
+    <url>%2F2018%2F11%2F04%2FCodeforces%20-%20gym%20-%20101550%20-%20A.Artwork(%E5%B9%B6%E6%9F%A5%E9%9B%86)%2F</url>
+    <content type="text"><![CDATA[题目链接：http://codeforces.com/gym/101550/attachments 题意：有一个 $n*m$ 的矩阵，初始格子都为白色，然后有 $q$ 个操作，每个操作给你一条线段的两个端点，$(x_1,y_1)$ $(x_2,y_2)$ , 然后把这条线段上的格子涂黑，问当前（每个操作不独立）有白色格子联通块？ 数据范围： $1 &lt;= n ,m&lt;= 1000$ $1 &lt;= q &lt;= 1e4$ $1 &lt;= x_1 &lt;= x_2 &lt;= n$ $1 &lt;= y_1 &lt;= y_2 &lt;= m$ 4s 样例：$input$ 1234564 6 52 2 2 61 3 4 32 5 3 54 6 4 61 6 4 6 $output$ 1234513343 解题思路：利用并查集，倒着推，在删除黑格时，判断四个方向会不会多产生白色联通块或减少联通块。 AC代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128#include&lt;cmath&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn = 1005;const int MaxN = 1e6 + 5;int a[maxn][maxn],ans[10005];int n,m,q,num,flag;int nx,ny,id,nid;bool vis[maxn][maxn];int father[MaxN];struct NODE&#123; int x_1,y_1; int x_2,y_2;&#125;node[10005];inline int GetID(int x,int y)&#123; return m * (x - 1) + y;&#125;int Find(int x)&#123; if(x == father[x]) return x; return father[x] = Find(father[x]);&#125;inline bool Check(int x,int y)&#123; if(x &gt;= 1 &amp;&amp; x &lt;= n &amp;&amp; y &gt;= 1 &amp;&amp; y &lt;= m) return true; return false;&#125;void Dfs(int x,int y,int F)&#123; vis[x][y] = 1; int now = GetID(x,y); if(Find(now) != F) father[Find(now)] = father[Find(F)]; for(int i = -1;i &lt;= 1;i++)&#123; for(int j = -1;j &lt;= 1;j++)&#123; int nx = x + i; int ny = y + j; if(i * j == 0 &amp;&amp; Check(nx,ny) &amp;&amp; !vis[nx][ny] &amp;&amp; a[nx][ny] == 0)&#123; Dfs(nx,ny,Find(now)); &#125; &#125; &#125;&#125;void Get()&#123; if(Check(nx,ny) &amp;&amp; a[nx][ny] == 0)&#123; nid = GetID(nx,ny); if(Find(nid) != Find(id))&#123; if(flag == 1) num--; father[Find(nid)] = father[Find(id)]; &#125; flag = 1; &#125;&#125;void Solve(int x,int y)&#123; flag = 0; id = GetID(x,y); nx = x + 1; // up ny = y; Get(); nx = x - 1; // down ny = y; Get(); nx = x; // left ny = y - 1; Get(); nx = x; // right ny = y + 1; Get(); if(flag == 0) num++;&#125;int main()&#123; num = 0; scanf("%d %d %d",&amp;n,&amp;m,&amp;q); for(int i = 1;i &lt;= q;i++)&#123; scanf("%d %d %d %d",&amp;node[i].x_1,&amp;node[i].y_1,&amp;node[i].x_2,&amp;node[i].y_2); if(node[i].x_1 == node[i].x_2)&#123; for(int j = node[i].y_1;j &lt;= node[i].y_2;j++) a[node[i].x_1][j]++; &#125; else&#123; for(int j = node[i].x_1;j &lt;= node[i].x_2;j++) a[j][node[i].y_1]++; &#125; &#125; for(int i = 1;i &lt;= n * m;i++) father[i] = i; for(int i = 1;i &lt;= n;i++)&#123; for(int j = 1;j &lt;= m;j++)&#123; if(a[i][j] == 0 &amp;&amp; !vis[i][j])&#123; num++; Dfs(i,j,Find(GetID(i,j))); &#125; &#125; &#125; ans[q] = num; for(int i = q;i &gt;= 1;i--)&#123; if(node[i].x_1 == node[i].x_2)&#123; for(int j = node[i].y_1;j &lt;= node[i].y_2;j++)&#123; a[node[i].x_1][j]--; int nowx = node[i].x_1; int nowy = j; if(a[nowx][nowy] == 0)&#123; Solve(nowx,nowy); &#125; &#125; &#125; else&#123; for(int j = node[i].x_1;j &lt;= node[i].x_2;j++)&#123; a[j][node[i].y_1]--; int nowx = j; int nowy = node[i].y_1; if(a[nowx][nowy] == 0)&#123; Solve(nowx,nowy); &#125; &#125; &#125; ans[i - 1] = num; &#125; for(int i = 1;i &lt;= q;i++) printf("%d\n",ans[i]);&#125;]]></content>
+      <categories>
+        <category>并查集</category>
+      </categories>
+      <tags>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[读题单词]]></title>
+    <url>%2F2018%2F11%2F04%2F%E8%AF%BB%E9%A2%98%E5%8D%95%E8%AF%8D%2F</url>
+    <content type="text"><![CDATA[$excluding$ : 不包括 $ cheat$ : 作弊 $against​$ ：反对]]></content>
+      <categories>
+        <category>读题</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Codeforces - gym - 101873 - C.Joyride!(Dijkstra+状态转移)]]></title>
     <url>%2F2018%2F10%2F29%2FCodeforces%20-%20gym%20-%20101873%20-%20C.Joyride!(Dijkstra%2B%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB)%2F</url>
     <content type="text"><![CDATA[题目链接：https://codeforces.com/gym/101873/problem/C 题意： 给你一副无向图，有 $n$ 个点，第 $i$ 个点花费时间为 $t_i$ 和 花费价钱为 $p_i$ $m$ 条边，经过每条边的花费时间都为 $t$ 问：从 $1$ 点出发，最后回到 $1$ 点时花费时间恰好为 $x$ ，最少花费价钱为多少？（可以在同一个点不动，但还是要花费时间和价钱，只要经过就花），如果不能恰好到达 $1$ 点，就输出 $It$ $is$ $a$ $trap.$ 数据范围： $1 &lt;= x &lt;= 1000$ $1 &lt;= n,m &lt;= 1000$ $1 &lt;= t &lt;= 1000 $ 样例：$input$ 12345678910111213141516171819202144 4 11 22 33 44 11 22 15 43 364 4 11 22 33 44 11 22 15 43 3 $output$ 12385 解题思路：因为题目要求最小花费价钱，所以第一反应就要想到跑个最短路。那么现在的问题就是这么解决每个点的状态？ 因为 $x$ 不超过 $1000$ ，我们可以把每个点的状态设为：$dp[i][j]$ 当在第 $i$ 点，花费时间为 $j$ 时的最少花费价钱。 然后我们就可以按照 $Dijkstra$ 转移了。(但这个复杂度我不太清楚这么算……) AC代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105#include&lt;cstdio&gt;#include&lt;map&gt;#include&lt;algorithm&gt;#include&lt;cmath&gt;#include&lt;cstring&gt;#include&lt;vector&gt;#include&lt;queue&gt;using namespace std;typedef long long LL;const int inf = 1 &lt;&lt; 30;const int maxn = 1e3;struct Node&#123; int id,x,cost; Node () &#123;&#125; Node (int _id,int _x,int _cost)&#123; id = _id; x = _x; cost = _cost; &#125; bool friend operator &lt; (Node a,Node b)&#123; return a.cost &gt; b.cost; &#125;&#125;;int dp[2 * maxn + 5][maxn + 5];vector&lt;int&gt; G[maxn];int t[2 * maxn + 5],p[2 * maxn + 5];int T,n,m,X;void Init(int s)&#123; for(int i = 0;i &lt;= 2 * n;i++)&#123; for(int j = 0;j &lt;= X;j++)&#123; dp[i][j] = inf; &#125; &#125; dp[s][t[s]] = p[s];&#125;void Dijstra(int s)&#123; Init(s); priority_queue&lt;Node&gt; pq; pq.push(Node(s,t[s],p[s])); while(!pq.empty())&#123; Node now = pq.top(); pq.pop(); for(int i = 0;i &lt; G[now.id].size();i++)&#123; int tmp; int v = G[now.id][i]; if(abs(v - now.id) == n) tmp = 0; else tmp = T; tmp = now.x + tmp + t[v]; //printf("tmp = %d ,v = %d\n",tmp,v); //printf("** %d\n",dp[v][tmp]); //printf("%d %d %d %d\n",now.id,now.x,p[v],dp[now.id][now.x] + p[v]); if(tmp &lt;= X &amp;&amp; dp[v][tmp] &gt; dp[now.id][now.x] + p[v])&#123; dp[v][tmp] = dp[now.id][now.x] + p[v]; pq.push(Node(v,tmp,dp[v][tmp])); &#125; &#125; &#125;&#125;bool vis[2 * maxn + 5][2 * maxn + 5];int main()&#123; scanf("%d",&amp;X); scanf("%d %d %d",&amp;n,&amp;m,&amp;T); for(int i = 1;i &lt;= m;i++)&#123; int u,v; scanf("%d %d",&amp;u,&amp;v); G[u].push_back(v); G[v].push_back(u); &#125; for(int i = 1;i &lt;= n;i++)&#123; scanf("%d %d",&amp;t[i],&amp;p[i]); t[i + n] = t[i]; p[i + n] = p[i]; &#125; for(int i = 1;i &lt;= n;i++)&#123; for(int j = 0;j &lt; G[i].size();j++)&#123; int tmp = G[i][j]; if(vis[i + n][tmp] == 0)&#123; G[i + n].push_back(tmp); G[tmp].push_back(i + n); vis[i + n][tmp] = 1; vis[tmp][i + n] = 1; &#125; if(vis[i + n][tmp + n] == 0)&#123; G[i + n].push_back(tmp + n); G[tmp + n].push_back(i + n); vis[i + n][tmp + n] = 1; vis[tmp + n][i + n] = 1; &#125; &#125; G[i].push_back(i + n); G[i + n].push_back(i); &#125; Dijstra(1); int mi = inf; mi = min(mi,dp[1][X]); mi = min(mi,dp[1 + n][X]); if(mi == inf) printf("It is a trap.\n"); else printf("%d\n",mi);&#125;]]></content>
@@ -98,9 +117,9 @@
         <category>博弈</category>
       </categories>
       <tags>
+        <tag>Codeforces</tag>
         <tag>DP</tag>
         <tag>博弈</tag>
-        <tag>Codeforces</tag>
       </tags>
   </entry>
   <entry>
@@ -330,8 +349,8 @@
         <category>DP</category>
       </categories>
       <tags>
-        <tag>HDU</tag>
         <tag>完全背包</tag>
+        <tag>HDU</tag>
       </tags>
   </entry>
   <entry>
@@ -342,9 +361,9 @@
         <category>DP</category>
       </categories>
       <tags>
+        <tag>HDU</tag>
         <tag>浮点数</tag>
         <tag>一维DP</tag>
-        <tag>HDU</tag>
       </tags>
   </entry>
   <entry>
