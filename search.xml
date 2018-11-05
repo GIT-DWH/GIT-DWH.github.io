@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Codeforces - gym - 101550 - C.Card Hand Sorting(最长公共子序列)]]></title>
+    <url>%2F2018%2F11%2F05%2FCodeforces%20-%20gym%20-%20101550%20-%20C.Card%20Hand%20Sorting(%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97)%2F</url>
+    <content type="text"><![CDATA[题目链接：http://codeforces.com/gym/101550/attachments 题意： 输入一个 $n$ 表示有 $n$ 张牌 牌一共有 $4$ 种颜色 ${s, h, d, c}$ 牌上的符号有(从小到大) ${2,3,4,5,6,7,8,9,T, J, Q, K,A}$ 每张牌给的格式为：符号+牌的颜色 如：$2h$ , $Jd$ 问是否以一种排列满足 相同颜色的牌放在一起 相同颜色的牌要 递增 或 递减 的排列 颜色的顺序可以随便 使得这一种排列放回原来的排列步数最少的多少？ 数据范围： $1 &lt;= n &lt;= 52$ 样例：$input$ 1234567842h Th 8c Qh79d As 2s Qd 2c Jd 8h42h 3h 9c 8c $output$ 12345120 解题思路：那么可以先暴力求出所有的排列情况，然后求出每种排列与原排列的最长公共子序列，那么答案为 $min(n - 最长公共子序列)$ AC代码：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273#include&lt;bits/stdc++.h&gt;using namespace std;int n;int f[300];char s[55][3];int a[55],b[55],p[6],pos[6];int dp[55][55];vector&lt;int&gt; G[6];void Init()&#123; for(int i = '1';i &lt;= '9';i++) f[i] = i - '0'; f['T'] = 10; f['J'] = 11; f['Q'] = 12; f['K'] = 13; f['A'] = 14; p[1] = 1; p[2] = 2; p[3] = 3; p[4] = 4;&#125;bool cmp(int x,int y)&#123; return x &gt; y;&#125;int Solve()&#123; int res = 0; memset(dp,0,sizeof(dp)); for(int i = 2;i &lt;= n + 1;i++)&#123; for(int j = 2;j &lt;= n + 1;j++)&#123; if(a[i - 1] == b[j - 1]) dp[i][j] = max(dp[i][j],dp[i - 1][j - 1] + 1); else dp[i][j] = max(dp[i][j - 1],dp[i - 1][j]); &#125; &#125; return n - dp[n + 1][n + 1];&#125;int main()&#123; scanf("%d",&amp;n); int ans = 1 &lt;&lt; 30; Init(); for(int i = 1;i &lt;= n;i++) scanf("%s",s[i] + 1); do&#123; G[1].clear(); G[2].clear(); G[3].clear(); G[4].clear(); for(int i = 1;i &lt;= 4;i++) pos[p[i]] = i; for(int i = 1;i &lt;= n;i++)&#123; if(s[i][2] == 's') a[i] = pos[1] * 100 + f[s[i][1]], G[1].push_back(a[i]); else if(s[i][2] == 'h')&#123; a[i] = pos[2] * 100 + f[s[i][1]], G[2].push_back(a[i]); &#125; else if(s[i][2] == 'd')&#123; a[i] = pos[3] * 100 + f[s[i][1]], G[3].push_back(a[i]); &#125; else if(s[i][2] == 'c')&#123; a[i] = pos[4] * 100 + f[s[i][1]], G[4].push_back(a[i]); &#125; &#125; for(int j = 0;j &lt;= 15;j++)&#123; int tot = 0; for(int i = 0;i &lt;= 3;i++)&#123; if((j &amp; (1 &lt;&lt; i)) == 0)&#123; // small -&gt; big sort(G[p[i + 1]].begin(),G[p[i + 1]].end()); &#125; else&#123; // big -&gt; small sort(G[p[i + 1]].begin(),G[p[i + 1]].end(),cmp); &#125; for(int k = 0;k &lt; G[p[i + 1]].size();k++)&#123; b[++tot] = G[p[i + 1]][k]; &#125; &#125; ans = min(ans,Solve()); &#125; &#125;while(next_permutation(p + 1,p + 1 + 4)); printf("%d\n",ans);&#125;]]></content>
+      <categories>
+        <category>最长公共子序列</category>
+      </categories>
+      <tags>
+        <tag>Codeforces</tag>
+        <tag>最长公共子序列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[LCA模板]]></title>
+    <url>%2F2018%2F11%2F04%2FLCA%E6%A8%A1%E6%9D%BF%2F</url>
+    <content type="text"><![CDATA[1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#include&lt;bits/stdc++.h&gt;# define MAXN 500001using namespace std;int n, m, s;int f[MAXN][25], deep[MAXN];vector &lt;int&gt; vec[MAXN];inline void dfs(int u)&#123; int i, v; deep[u] = deep[f[u][0]] + 1; for(i = 0; f[u][i]; i++) f[u][i + 1] = f[f[u][i]][i]; for(i = 0; i &lt; vec[u].size(); i++) &#123; v = vec[u][i]; if(!deep[v]) f[v][0] = u, dfs(v); &#125;&#125;inline int lca(int x, int y)&#123; int i; if(deep[x] &lt; deep[y]) swap(x, y); for(i = 20; i &gt;= 0; i--) if(deep[f[x][i]] &gt;= deep[y]) x = f[x][i]; if(x == y) return x; for(i = 20; i &gt;= 0; i--) if(f[x][i] != f[y][i]) x = f[x][i], y = f[y][i]; return f[x][0];&#125;int main()&#123; int i, x, y; scanf("%d %d %d",&amp;n,&amp;m,&amp;s) for(i = 1; i &lt; n; i++) &#123; x = get_num(); y = get_num(); vec[x].push_back(y); vec[y].push_back(x); &#125; dfs(s); for(i = 1; i &lt;= m; i++) &#123; scanf("%d %d", &amp;x, &amp;y); printf("%d\n", lca(x, y)); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>模板</tag>
+        <tag>LCA</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Codeforces - gym - 101550 - A.Artwork(并查集)]]></title>
     <url>%2F2018%2F11%2F04%2FCodeforces%20-%20gym%20-%20101550%20-%20A.Artwork(%E5%B9%B6%E6%9F%A5%E9%9B%86)%2F</url>
     <content type="text"><![CDATA[题目链接：http://codeforces.com/gym/101550/attachments 题意：有一个 $n*m$ 的矩阵，初始格子都为白色，然后有 $q$ 个操作，每个操作给你一条线段的两个端点，$(x_1,y_1)$ $(x_2,y_2)$ , 然后把这条线段上的格子涂黑，问当前（每个操作不独立）有白色格子联通块？ 数据范围： $1 &lt;= n ,m&lt;= 1000$ $1 &lt;= q &lt;= 1e4$ $1 &lt;= x_1 &lt;= x_2 &lt;= n$ $1 &lt;= y_1 &lt;= y_2 &lt;= m$ 4s 样例：$input$ 1234564 6 52 2 2 61 3 4 32 5 3 54 6 4 61 6 4 6 $output$ 1234513343 解题思路：利用并查集，倒着推，在删除黑格时，判断四个方向会不会多产生白色联通块或减少联通块。 AC代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128#include&lt;cmath&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;const int maxn = 1005;const int MaxN = 1e6 + 5;int a[maxn][maxn],ans[10005];int n,m,q,num,flag;int nx,ny,id,nid;bool vis[maxn][maxn];int father[MaxN];struct NODE&#123; int x_1,y_1; int x_2,y_2;&#125;node[10005];inline int GetID(int x,int y)&#123; return m * (x - 1) + y;&#125;int Find(int x)&#123; if(x == father[x]) return x; return father[x] = Find(father[x]);&#125;inline bool Check(int x,int y)&#123; if(x &gt;= 1 &amp;&amp; x &lt;= n &amp;&amp; y &gt;= 1 &amp;&amp; y &lt;= m) return true; return false;&#125;void Dfs(int x,int y,int F)&#123; vis[x][y] = 1; int now = GetID(x,y); if(Find(now) != F) father[Find(now)] = father[Find(F)]; for(int i = -1;i &lt;= 1;i++)&#123; for(int j = -1;j &lt;= 1;j++)&#123; int nx = x + i; int ny = y + j; if(i * j == 0 &amp;&amp; Check(nx,ny) &amp;&amp; !vis[nx][ny] &amp;&amp; a[nx][ny] == 0)&#123; Dfs(nx,ny,Find(now)); &#125; &#125; &#125;&#125;void Get()&#123; if(Check(nx,ny) &amp;&amp; a[nx][ny] == 0)&#123; nid = GetID(nx,ny); if(Find(nid) != Find(id))&#123; if(flag == 1) num--; father[Find(nid)] = father[Find(id)]; &#125; flag = 1; &#125;&#125;void Solve(int x,int y)&#123; flag = 0; id = GetID(x,y); nx = x + 1; // up ny = y; Get(); nx = x - 1; // down ny = y; Get(); nx = x; // left ny = y - 1; Get(); nx = x; // right ny = y + 1; Get(); if(flag == 0) num++;&#125;int main()&#123; num = 0; scanf("%d %d %d",&amp;n,&amp;m,&amp;q); for(int i = 1;i &lt;= q;i++)&#123; scanf("%d %d %d %d",&amp;node[i].x_1,&amp;node[i].y_1,&amp;node[i].x_2,&amp;node[i].y_2); if(node[i].x_1 == node[i].x_2)&#123; for(int j = node[i].y_1;j &lt;= node[i].y_2;j++) a[node[i].x_1][j]++; &#125; else&#123; for(int j = node[i].x_1;j &lt;= node[i].x_2;j++) a[j][node[i].y_1]++; &#125; &#125; for(int i = 1;i &lt;= n * m;i++) father[i] = i; for(int i = 1;i &lt;= n;i++)&#123; for(int j = 1;j &lt;= m;j++)&#123; if(a[i][j] == 0 &amp;&amp; !vis[i][j])&#123; num++; Dfs(i,j,Find(GetID(i,j))); &#125; &#125; &#125; ans[q] = num; for(int i = q;i &gt;= 1;i--)&#123; if(node[i].x_1 == node[i].x_2)&#123; for(int j = node[i].y_1;j &lt;= node[i].y_2;j++)&#123; a[node[i].x_1][j]--; int nowx = node[i].x_1; int nowy = j; if(a[nowx][nowy] == 0)&#123; Solve(nowx,nowy); &#125; &#125; &#125; else&#123; for(int j = node[i].x_1;j &lt;= node[i].x_2;j++)&#123; a[j][node[i].y_1]--; int nowx = j; int nowy = node[i].y_1; if(a[nowx][nowy] == 0)&#123; Solve(nowx,nowy); &#125; &#125; &#125; ans[i - 1] = num; &#125; for(int i = 1;i &lt;= q;i++) printf("%d\n",ans[i]);&#125;]]></content>
@@ -8,6 +32,7 @@
         <category>并查集</category>
       </categories>
       <tags>
+        <tag>Codeforces</tag>
         <tag>并查集</tag>
       </tags>
   </entry>
@@ -27,6 +52,7 @@
         <category>图论</category>
       </categories>
       <tags>
+        <tag>Codeforces</tag>
         <tag>最短路</tag>
       </tags>
   </entry>
@@ -49,6 +75,7 @@
         <category>DP</category>
       </categories>
       <tags>
+        <tag>Codeforces</tag>
         <tag>DP计数</tag>
       </tags>
   </entry>
@@ -60,6 +87,7 @@
         <category>几何</category>
       </categories>
       <tags>
+        <tag>Codeforces</tag>
         <tag>皮克定理</tag>
       </tags>
   </entry>
@@ -71,6 +99,7 @@
         <category>图论</category>
       </categories>
       <tags>
+        <tag>Codeforces</tag>
         <tag>二分图匹配</tag>
       </tags>
   </entry>
@@ -82,6 +111,7 @@
         <category>几何</category>
       </categories>
       <tags>
+        <tag>Codeforces</tag>
         <tag>几何</tag>
         <tag>数学</tag>
       </tags>
@@ -349,8 +379,8 @@
         <category>DP</category>
       </categories>
       <tags>
-        <tag>完全背包</tag>
         <tag>HDU</tag>
+        <tag>完全背包</tag>
       </tags>
   </entry>
   <entry>
@@ -361,9 +391,9 @@
         <category>DP</category>
       </categories>
       <tags>
-        <tag>HDU</tag>
         <tag>浮点数</tag>
         <tag>一维DP</tag>
+        <tag>HDU</tag>
       </tags>
   </entry>
   <entry>
