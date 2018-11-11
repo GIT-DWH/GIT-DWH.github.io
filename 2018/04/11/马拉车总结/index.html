@@ -468,6 +468,7 @@
 <a id="more"></a>
 <h4 id="一-算法过程分析"><a href="#一-算法过程分析" class="headerlink" title="一.算法过程分析"></a>一.算法过程分析</h4><p>由于回文分为偶回文（比如 $bccb$）和奇回文（比如 $bcacb$），而在处理奇偶问题上会比较繁琐，所以这里我们使用一个技巧，在字符间插入一个字符（前提这个字符未出现在串里）。举个例子：<code>s=&quot;abbahopxpo&quot;</code>，转换为<code>s_new=&quot;$#a#b#b#a#h#o#p#x#p#o#&quot;</code>（这里的字符 $ 只是为了防止越界，下面代码会有说明），如此，s 里起初有一个偶回文 <code>abba</code> 和一个奇回文 <code>opxpo</code>，被转换为 <code>#a#b#b#a#</code> 和 <code>#o#p#x#p#o#</code>，长度都转换成了奇数。</p>
 <p>  定义一个辅助数组 <code>int p[]</code>， <code>p[i]</code> 表示以 <code>ma[i]</code>为中心的最长回文的半径，例如：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -543,6 +544,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>可以看出，<code>p[i]-1</code> 正好是原字符串中最长回文串的长度。</p>
 <h4 id="二-定义-R-为以-ma-id-为中心的最长回文最右边界，也就是-R-id-p-id-。-j-与-i-关于-id-对称，根据回文的性质，p-i-的值基于以下三种情况得出"><a href="#二-定义-R-为以-ma-id-为中心的最长回文最右边界，也就是-R-id-p-id-。-j-与-i-关于-id-对称，根据回文的性质，p-i-的值基于以下三种情况得出" class="headerlink" title="二.定义 R 为以 ma[id] 为中心的最长回文最右边界，也就是 R = id + p[id]。$j$ 与 $i$关于 $id$ 对称，根据回文的性质，p[i] 的值基于以下三种情况得出:"></a>二.定义 R 为以 ma<code>[id]</code> 为中心的最长回文最右边界，也就是 <code>R = id + p[id]</code>。$j$ 与 $i$关于 $id$ 对称，根据回文的性质，<code>p[i]</code> 的值基于以下三种情况得出:</h4><p>​    (1). $j$ 的回文串有一部分在 $id$  的<strong>之外</strong>，如下图：</p>
 <p><img src="http://oi0fekpsr.bkt.clouddn.com/Manacher%E7%AE%97%E6%B3%95_1.png?imageView2/2/w/1440/q/75/format/webp" alt="img"></p>
@@ -710,7 +712,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -732,7 +734,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -845,7 +847,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">27.4k</span>
+    <span title="Site words total count">28.1k</span>
   
 </div>
 
