@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Codeforces- 521 - div3 - F2. Pictures with Kittens (hard version)(单调队列优化 + DP)]]></title>
+    <url>%2F2018%2F11%2F19%2FCodeforces-%20521%20-%20div3%20-%20F2.%20Pictures%20with%20Kittens%20(hard%20version)(%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96%20%2B%20DP)%2F</url>
+    <content type="text"><![CDATA[参考博客：http://www.cnblogs.com/widsom/p/9972681.html 题目链接：http://codeforces.com/contest/1077/problem/F2 题意：输入 $n$ $,$ $k$ $,$ $x$ $,$ 在 $n$ 个数里挑选 $x$ 个数，使得任意连续长度为 $k$ 的子序列中至少有一个数是被挑选的数，问挑选数之和最大是多少？如果不能满足条件输出 $-1$ 。 数据范围： $1 &lt;= n,k,x &lt;= 5000$ $ 1&lt;=a_i&lt;= 1e9$ ​ 样例：$input$ 123456785 2 35 1 3 10 16 1 510 30 30 70 10 104 3 11 100 1 1 $output$ 1234518-1100 解题思路：单调队列 $dp[i]:$ 挑选 $i$ 个数时，在满足条件下，答案( $second$ ) 和 对应的位置 ( $first$ ) AC 代码：12345678910111213141516171819202122232425262728293031323334353637#include&lt;cstdio&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;cmath&gt;#include&lt;queue&gt;#include&lt;cstring&gt;#include&lt;map&gt;using namespace std;typedef long long LL;const LL INF = 1LL &lt;&lt; 60;const int maxn = 5e3 + 5;LL a[maxn], tmp[maxn];deque&lt; pair&lt;int,LL&gt; &gt; dp[maxn];int n,k,x;int main()&#123; scanf("%d %d %d",&amp;n,&amp;k,&amp;x); for(int i = 1;i &lt;= n;i++) scanf("%lld",&amp;a[i]); dp[0].push_back(make_pair(0,0)); for(int i = 1;i &lt;= n;i++)&#123; for(int j = 1;j &lt;= x;j++)&#123; while(!dp[j - 1].empty() &amp;&amp; dp[j - 1].front().first &lt; i - k) dp[j - 1].pop_front(); // &lt; i - k 的都不能转移到 j if(!dp[j - 1].empty()) tmp[j] = dp[j - 1].front().second + a[i]; // 这里是选，不选的话保持不变就行，无须转移。 &#125; for(int j = 1;j &lt;= x;j++)&#123; while(!dp[j].empty() &amp;&amp; tmp[j] &gt;= dp[j].back().second) dp[j].pop_back(); if(tmp[j]) dp[j].push_back(make_pair(i,tmp[j])); tmp[j] = 0; &#125; &#125; LL ans = -1; while(!dp[x].empty() &amp;&amp; dp[x].front().first &lt;= n - k) dp[x].pop_front(); if(!dp[x].empty()) ans = dp[x].front().second; printf("%lld\n",ans);&#125;]]></content>
+      <categories>
+        <category>DP</category>
+      </categories>
+      <tags>
+        <tag>DP</tag>
+        <tag>单调队列</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[莫队算法模板]]></title>
     <url>%2F2018%2F11%2F17%2F%E8%8E%AB%E9%98%9F%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF%2F</url>
     <content type="text"><![CDATA[123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657// 复杂度：O( n^(1.5) )#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long LL;const int maxn = 1e5 + 5;int pos[maxn];int L,R;LL ans[maxn],Ans;struct NODE&#123; LL l,r; int id;&#125;Q[maxn];bool cmp(NODE x, NODE y)&#123; if(pos[x.l] == pos[y.l]) return x.r &lt; y.r; return pos[x.l] &lt; pos[y.l];&#125;int main()&#123; int n; scanf("%d",&amp;n); for(int i = 1;i &lt;= n;i++)&#123; scanf("%lld %lld",&amp;Q[i].l,&amp;Q[i].r); // 离线询问 Q[i].id = i; &#125; int siz = sqrt(100000); // 分块 for(int i = 1;i &lt;= 100000;i++) pos[i] = i / siz; sort(Q + 1,Q + 1 + n,cmp); L = 0, R = 0, Ans = 1LL; for(int i = 1;i &lt;= n;i++)&#123; while(L &lt; Q[i].l)&#123; /* 进行操作 */ L++; &#125; while(L &gt; Q[i].l)&#123; L--; /* 进行操作 */ &#125; while(R &lt; Q[i].r)&#123; R++; /* 进行操作 */ &#125; while(R &gt; Q[i].r)&#123; /* 进行操作 */ R--; &#125; ans[Q[i].id] = Ans; // 记录答案 &#125; for(int i = 1;i &lt;= n;i++) printf("%lld\n",ans[i]); // 输出答案 return 0;&#125;]]></content>
