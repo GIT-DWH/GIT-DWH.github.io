@@ -12,7 +12,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[a]]></title>
+    <title><![CDATA[不想再 WA 了]]></title>
     <url>%2F2018%2F12%2F30%2F%E4%B8%8D%E6%83%B3%E5%86%8D%20WA%20%E4%BA%86%2F</url>
     <content type="text"><![CDATA[不想再 WA 了（刚发现没传。还以为传了，尴尬了…) 题意：​ 欢迎参加西南民族大学 $2018$ 年校赛。对于你来说，做题 $WA$ 了 是一件很痛苦的事，所以你从现在开始不想再看到有题 $WA$ 了。那么现在给你 $A$ , $C$ , $W$ 三个字符，问组成一个长度为 $n$ （不含 $WA$ ) 的字符串，总共有多少种方案？( $T$ 组数据) 数据范围： $1 &lt;= T &lt;= 10$ $1 &lt;= n &lt;= 10000$ 样例：$input$ 123212 $output$ 1238 解题思路：递推： $dp[i][j] : $ 代表以组成长度为 $i$ 并以 $j$ 结尾的字符串时的方案数。 $1$: 代表以 $A$ 结尾 $2$: 代表以 $C$ 结尾 $3$: 代表以 $W$ 结尾 若第 $i$ 位放 $1$ (A) ：那么 $dp[i][1]$ 只能由以长度为 $i - 1$ 并以 $1$ (A) 和 以 $2$ (C) 结尾的字符串方案数相加得到，因为不能出现 $WA$ 。所以 $dp[i][1] = dp[i - 1][1] + dp[i - 1][2]$ 若第 $i$ 位不放 $1$ (A)：那么就无所顾忌，直接由以长度为 $i - 1$ 并以 $1$ (A) ，以 $2$ (C) 和 以 3 (W) 结尾的字符串方案数相加得到。所以 $dp[i][2] = dp[i - 1][1] + dp[i - 1][2] + dp[i - 1][3]$ ,$dp[i][3] = dp[i - 1][1] + dp[i - 1][2] + dp[i - 1][3]$ , 最后答案：$dp[n][1] + dp[n][2] + dp[n][3]$ AC代码：1234567891011121314151617181920212223242526272829#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;cmath&gt;#include&lt;iostream&gt;#include&lt;algorithm&gt;using namespace std;int dp[15][5];void Init()&#123; dp[1][1] = 1; dp[1][2] = 1; dp[1][3] = 1; for(int i = 2;i &lt;= 10;i++)&#123; dp[i][1] = dp[i - 1][1] + dp[i - 1][2]; dp[i][2] = dp[i - 1][1] + dp[i - 1][2] + dp[i - 1][3]; dp[i][3] = dp[i - 1][1] + dp[i - 1][2] + dp[i - 1][3]; &#125;&#125;int main()&#123; Init(); int t,n; scanf("%d",&amp;t); while(t--)&#123; scanf("%d",&amp;n); printf("%d\n",dp[n][1] + dp[n][2] + dp[n][3]); &#125;&#125;]]></content>
   </entry>
