@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JSP," />
+
+
+
+
+
+  <link rel="alternate" href="/rss2.xml" title="天之界" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="keywords" content="JSP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSP 基本语法">
+<meta property="og:url" content="http://yoursite.com/2019/05/07/JSP基本语法/index.html">
+<meta property="og:site_name" content="天之界">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/143/4/thumb.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/05/07/5cd130dc5f767.jpg">
+<meta property="og:updated_time" content="2019-05-21T14:20:22.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSP 基本语法">
+<meta name="twitter:image" content="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/143/4/thumb.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/07/JSP基本语法/"/>
+
+
+
+
+
+  <title>JSP 基本语法 | 天之界</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+	<a href="https://github.com/GIT-DWH/GIT-DWH.github.io" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天之界</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+		
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+		
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+		
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+		
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+		
+      
+        
+        <li class="menu-item menu-item-留言板">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-newspaper-o"></i> <br />
+            
+            留言板
+          </a>
+        </li>
+		
+      
+	  
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/07/JSP基本语法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DWH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天之界">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JSP 基本语法</h1>
+        
+
+        <div class="post-meta">
+		
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-07T14:59:02+08:00">
+                2019-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JAVA/" itemprop="url" rel="index">
+                    <span itemprop="name">JAVA</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/05/07/JSP基本语法/" class="leancloud_visitors" data-flag-title="JSP 基本语法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><p><img src="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/143/4/thumb.jpg" alt="img"></p>
+<a id="more"></a>
+<h1 id="JSP基本语法"><a href="#JSP基本语法" class="headerlink" title="JSP基本语法"></a>JSP基本语法</h1><p><img src="https://i.loli.net/2019/05/07/5cd130dc5f767.jpg" alt=""></p>
+<h2 id="一-指令标识"><a href="#一-指令标识" class="headerlink" title="一.指令标识"></a>一.指令标识</h2><p>主要用于设定整个JSP页面范围内都有效的相关信息，它是被服务器解释并运行的。指令标签对于客户浏览器是不可见的。</p>
+<h4 id="语法格式："><a href="#语法格式：" class="headerlink" title="语法格式："></a>语法格式：</h4><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ 指令名 属性<span class="number">1</span> = <span class="string">"属性值1"</span> 属性<span class="number">2</span> = <span class="string">"属性2"</span>...%&gt;</span><br><span class="line"></span><br><span class="line">*指令名：用于指定 [指令名称]，在JSP中包含 [page]，[inlcude] 和 [taglib] <span class="number">3</span>条指令。</span><br><span class="line"></span><br><span class="line">*属性：用于指定 [属性名称]，不同的指令包含不同的属性。在一个指令中可以设置 [多个属性] ，各属性之间用 [逗号] 或 [空格] 分隔。</span><br><span class="line"></span><br><span class="line">*属性值：用于指定 [属性值]。</span><br></pre></td></tr></table></figure>
+<h3 id="1-page指令"><a href="#1-page指令" class="headerlink" title="1.page指令"></a>1.page指令</h3><p>page是JSP页面最常用的指令，用于定义整个JSP页面的相关属性，这些属性在JSP中 [被] 服务器[解析] 成 [Servlet] 时会 [转换] 为相应的 [java程序代码] 。page指令的语法格式：</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page attr1 = <span class="string">"value1"</span> attr2 = <span class="string">"value2"</span>... %&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="①-language-属性"><a href="#①-language-属性" class="headerlink" title="①.language 属性"></a>①.language 属性</h4><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">设置JSP页面 [语言] 属性：</span><br><span class="line">&lt;%@ page language = <span class="string">"java"</span> %&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="②-extends-属性"><a href="#②-extends-属性" class="headerlink" title="②.extends 属性"></a>②.extends 属性</h4><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设置JSP页面 [继承] 的 [java类] ，[一般不用] 。</span><br></pre></td></tr></table></figure>
+<h4 id="③-import-属性"><a href="#③-import-属性" class="headerlink" title="③.import 属性"></a>③.import 属性</h4><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在JSP页面中 [导入类包]:</span><br><span class="line">&lt;%@ page <span class="keyword">import</span> = <span class="string">"java.util.*"</span> %&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="④-pageEncoding-属性"><a href="#④-pageEncoding-属性" class="headerlink" title="④.pageEncoding 属性"></a>④.pageEncoding 属性</h4><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">设置JSP页面 [编码格式]：</span><br><span class="line">&lt;%@ page pageEncoding = <span class="string">"UTF-8"</span> %&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="⑤-contentType-属性"><a href="#⑤-contentType-属性" class="headerlink" title="⑤.contentType 属性"></a>⑤.contentType 属性</h4><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">设置JSP页面的 [MIME类型] 和 [字符编码]：</span><br><span class="line">&lt;%@ page contentType = <span class="string">"text/html; charset = UTF-8"</span> %&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="⑥-session-属性"><a href="#⑥-session-属性" class="headerlink" title="⑥.session 属性"></a>⑥.session 属性</h4><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">设置JSP页面 [是否] 使用 [HTTP] 的 [session] 会话对象：</span><br><span class="line">&lt;%@ page session = <span class="string">"false"</span> %&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="⑦-buffer-属性"><a href="#⑦-buffer-属性" class="headerlink" title="⑦.buffer 属性"></a>⑦.buffer 属性</h4><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">设置JSP的 [out 输出对象] 使用的 [缓冲区大小]，默认大小为<span class="number">8</span>kB，且单位只能使用KB。(<span class="number">8</span>,<span class="number">16</span>,<span class="number">32</span>,<span class="number">64</span>,<span class="number">128</span>)</span><br><span class="line">&lt;%@ page buffer = <span class="string">"128KB"</span> %&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="⑧-outoFlush-属性"><a href="#⑧-outoFlush-属性" class="headerlink" title="⑧.outoFlush 属性"></a>⑧.outoFlush 属性</h4><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">设置JSP页面 [缓存满时] ，是否 [自动刷新缓存] 。默认值为 [<span class="keyword">true</span>] ，如果设置为 [<span class="keyword">false</span>] ，则缓存被填满时将 [抛出异常] 。</span><br><span class="line">&lt;%@ page outoFlush = <span class="string">"false"</span> %&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="⑨-isErrorPage-属性"><a href="#⑨-isErrorPage-属性" class="headerlink" title="⑨.isErrorPage 属性"></a>⑨.isErrorPage 属性</h4><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">将 [当前JSP页面] 设置成 [错误处理页面] ，以处理另一个JSP页面的错误，也就是 [异常处理] 。这意味着当前JSP页面业务的改变。</span><br><span class="line">&lt;%@ page isErrorPage = <span class="string">"true"</span> %&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="⑩-errorPage-属性"><a href="#⑩-errorPage-属性" class="headerlink" title="⑩.errorPage 属性"></a>⑩.errorPage 属性</h4><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">该属性用于 [指定] [处理当前JSP页面] [异常错误] [的] [另一个JSP页面] ，[指定的JSP错误页面] 必须 [设置isErrorPage属性为<span class="keyword">true</span>] 。errorPage属性的属性值是一个 [url字符串] 。</span><br><span class="line">&lt;%@ page errorPage = <span class="string">"error/loginErrorPage.jsp"</span> %&gt;</span><br><span class="line"></span><br><span class="line">(注意：如果设置该属性，那么在web.xml文件中定义任何错误页面都将被忽略，而优先使用该属性定义的错误处理页面。)</span><br></pre></td></tr></table></figure>
+<h3 id="2-include-指令"><a href="#2-include-指令" class="headerlink" title="2.include 指令"></a>2.include 指令</h3><p>通过该指令可以在 [一个JSP页面] 中 [包含] [另一个JSP页面] 。不过该指令是 [静态包含]，也就是说呗包含文件中所有内容会被原样包含到该JSP页面中，即使被包含文件中有JSP代码，在包含时也不会被编译执行。[不能] 有 [相同名称] 的 [变量] 。</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ include file = <span class="string">"path"</span> %&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3-taglib-指令"><a href="#3-taglib-指令" class="headerlink" title="3.taglib 指令"></a>3.taglib 指令</h3><p>标识声明该页面中所有使用的标签库，同时引用标签库，并指定标签的前缀。在页面中引用标签库中的标签后，就可以通过 [前缀] 来 [引用] [标签库中] 的 [标签] 。</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix = <span class="string">"tagPrefix"</span> uri = <span class="string">"tagURL"</span> %&gt;</span><br><span class="line"></span><br><span class="line">*prefix：指定标签的前缀。该标签不能命名为jsp，jspx，java，javax，sun，servlet和sunw。</span><br><span class="line">*uri：指定 [标签库文件] 的 [存放位置] 。</span><br></pre></td></tr></table></figure>
+<h2 id="二-脚本标识"><a href="#二-脚本标识" class="headerlink" title="二. 脚本标识"></a>二. 脚本标识</h2><h3 id="1-JSP表达式"><a href="#1-JSP表达式" class="headerlink" title="1.JSP表达式"></a>1.JSP表达式</h3><p>JSP表达式用于 [向页面] 中 [输出信息] ，其语法格式如下：</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;%= 表达式 %&gt;</span><br><span class="line"></span><br><span class="line">*表达式：可以是任何java语言的完整表达式。该表达式的 [最终] 运算 [结果] 将 [被] [转换成] [字符串] 。</span><br><span class="line"></span><br><span class="line">(注意：<span class="string">"&lt;%"</span> 与 <span class="string">"="</span> 之间不可以有空格，但是<span class="string">"="</span>与其后面的表达式之间可以有空格)。</span><br></pre></td></tr></table></figure>
+<h3 id="2-声明标识"><a href="#2-声明标识" class="headerlink" title="2.声明标识"></a>2.声明标识</h3><p>[定义] [全局] 的 [变量] 或 [方法] 。</p>
+<p>生命周期：从 [创建开始] 到 [服务器关闭结束] 。</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%! 声明变量或方法的代码 %&gt;</span><br><span class="line"></span><br><span class="line">(注意：<span class="string">"&lt;%"</span> 与 <span class="string">"!"</span> 之间不可以有空格，但是<span class="string">"="</span>与其后面的表达式之间可以有空格。另外，<span class="string">"&lt;%!"</span> 与 <span class="string">"%&gt;"</span> 可以不在同一行)</span><br></pre></td></tr></table></figure>
+<p>如：</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;%!</span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">0</span>;    <span class="comment">//定义全局变量</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">count</span><span class="params">()</span></span>&#123;       <span class="comment">//声明全局方法</span></span><br><span class="line">    	number++;      <span class="comment">//累加number</span></span><br><span class="line">        <span class="keyword">return</span> number; <span class="comment">//返回number的值</span></span><br><span class="line">	&#125;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">（通过上面的代码声明全局变量和全局方法后，在后面如果通过&lt;%= count() %&gt;调用全局方法，则每次刷新页面，都会输出前一次值+<span class="number">1</span>的值。）</span><br></pre></td></tr></table></figure>
+<h3 id="3-代码片段"><a href="#3-代码片段" class="headerlink" title="3.代码片段"></a>3.代码片段</h3><p>生命周期：[页面关闭后] 就会销毁。</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% Java代码或脚本代码 %&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="三-JSP注释"><a href="#三-JSP注释" class="headerlink" title="三. JSP注释"></a>三. JSP注释</h2><h3 id="1-隐藏注释"><a href="#1-隐藏注释" class="headerlink" title="1.隐藏注释"></a>1.隐藏注释</h3><p>这种注释不不仅在浏览器中看不到，在查看 [HTML源代码] 也 [看不到] ，所以这种注释的安全性比较高。</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%-- 注释内容 --%&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-动态注释"><a href="#2-动态注释" class="headerlink" title="2.动态注释"></a>2.动态注释</h3><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--&lt;%= <span class="keyword">new</span> Date()%&gt;--&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="四-动作标识"><a href="#四-动作标识" class="headerlink" title="四. 动作标识"></a>四. 动作标识</h2><h3 id="1-包含文件标识-jsp-include"><a href="#1-包含文件标识-jsp-include" class="headerlink" title="1.包含文件标识 \jsp:include"></a>1.包含文件标识 \<a href="jsp:include" target="_blank" rel="noopener">jsp:include</a></h3><p>JSP的动作标识\<a href="jsp:include" target="_blank" rel="noopener">jsp:include</a>用于 [向当前页面中] [包含] [其他的文件] 。[被包含的文件] 可以是 [动态文件] ，也可以是 [静态文件] 。</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:include page = <span class="string">"url"</span> flush = <span class="string">"false|true"</span>/&gt;</span><br><span class="line">或</span><br><span class="line">&lt;jsp:include page = <span class="string">"url"</span> flush = <span class="string">"false|true"</span>&gt;</span><br><span class="line">    子动作标识&lt;jsp:param&gt;</span><br><span class="line">&lt;/jsp:include&gt;</span><br><span class="line">    </span><br><span class="line">子动作标识&lt;jsp:param&gt;:用于向被包含的 [动态页面] 中 [传递参数]。</span><br><span class="line"></span><br><span class="line">&lt;jsp:include&gt; 标识对包含的 [动态文件] 和 [静态文件] 的 [处理方式] 是 [不同的] 。</span><br><span class="line">静态文件：则页面执行后，在使用了该标识的位置将会 [输出] 这个 [文件的内容] 。</span><br><span class="line">动态文件：那么JSP编译器将 [编译并执行] 这个 [文件] 。</span><br><span class="line"></span><br><span class="line">&lt;jsp:include&gt; 标识会 [识别] 文件的 [类型] ，[而不是] 通过 [文件的名称] 来 [判断] 该文件是静态的还是动态的。</span><br></pre></td></tr></table></figure>
+<p>在应用\<a href="jsp:inlcude" target="_blank" rel="noopener">jsp:inlcude</a>标识进行文件包含时，为了使整个页面的层次结构不发生冲突，建议在被包含页面中将\<html>,\<body>等标记删除。</body></html></p>
+<h4 id="include指令-与-jsp-include动作标识"><a href="#include指令-与-jsp-include动作标识" class="headerlink" title="include指令 与 \jsp:include动作标识"></a>include指令 与 \<a href="jsp:include" target="_blank" rel="noopener">jsp:include</a>动作标识</h4><p>①</p>
+<p> [include指令] [通过file属性] 指定被包含的文件，并且file属性 [不支持] [任何表达式] 。</p>
+<p> [\<a href="jsp:include" target="_blank" rel="noopener">jsp:include</a>动作标识] [通过page属性] 指定被包含的文件，而且page属性 [支持JSP表达式] 。</p>
+<p>②</p>
+<p>使用include指令时，被包含文件内容会原封不动地插入到包含页中，然后JSP编译器再将合成后的文件最终编译成一个java文件；</p>
+<p>使用\<a href="jsp:include" target="_blank" rel="noopener">jsp:include</a>动作标识包含文件时，当该标识被执行时，程序会将请求 [转发]（注意是转发，而不是请求重定向）到被包含的页面，并将执行结果 [输出] 到浏览器中，然后 [返回] 包含页，继续  [执行] 后面的代码。因为服务器执行的是 [多个] 文件，所以JSP编译器会 [分别] 对这些文件进行编译。</p>
+<p>③</p>
+<p>在应用include指令包含文件时，由于被包含的文件最终会 [生成一个文件] ，所以在被包含文件，包含文件中 [不能] 有 [重名] 的变量或方法。</p>
+<p>在应用\<a href="jsp:include" target="_blank" rel="noopener">jsp:include</a>动作标识时，由于每个文件时 [单独编译] 的，所以在被包含文件和包含文件中 [重名] 的变量和方法是 [不相冲突] 的。</p>
+<h3 id="2-请求转发标识-jsp-forward"><a href="#2-请求转发标识-jsp-forward" class="headerlink" title="2.请求转发标识 \jsp:forward"></a>2.请求转发标识 \<a href="jsp:forward" target="_blank" rel="noopener">jsp:forward</a></h3><p>通过\<a href="jsp:forward" target="_blank" rel="noopener">jsp:forward</a>动作标识可以 [将请求转发] 到 [其他的Web资源] ，例如：另一个 [JSP页面] ，[HTML页面] ， [Servlet] 等。执行请求转发后， [当前页面] 将 [不再被执行] ，而是 [去执行] 该标识 [指定] 的 [目标页面] 。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:forward page = <span class="string">"url"</span>/&gt;</span><br><span class="line">或</span><br><span class="line">&lt;jsp:forward page = <span class="string">"url"</span>&gt;</span><br><span class="line">    子动作标识&lt;jsp:param&gt;</span><br><span class="line">&lt;/jsp:forward&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3-传递参数标识-jsp-param"><a href="#3-传递参数标识-jsp-param" class="headerlink" title="3.传递参数标识 \jsp:param"></a>3.传递参数标识 \<a href="jsp:param" target="_blank" rel="noopener">jsp:param</a></h3><p>JSP的动作标识 \<a href="jsp:param" target="_blank" rel="noopener">jsp:param</a>可以作为其他标识的子标识，用于为其他标识 [传递参数] 。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:param name = <span class="string">"参数名"</span> value=<span class="string">"参数值"</span>\&gt;</span><br><span class="line">    </span><br><span class="line">例如：</span><br><span class="line">&lt;jsp:forward page = <span class="string">"modify.jsp"</span>&gt;</span><br><span class="line">    &lt;jsp:param name = <span class="string">"useid"</span> value = <span class="string">"7"</span>/&gt;</span><br><span class="line">&lt;/jsp:forward&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+	
+	
+      <div>
+        
+    <div style="text-align:center;color: #ccc;font-size:14px;">
+        ------ 本文结束 , 感谢阅读 ------</div>
+
+	
+      </div>
+    
+
+	<div>
+      
+        
+      
+	</div>
+    
+
+	
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JSP/" rel="tag"><i class="fa fa-tag"></i> JSP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/09/最近公共祖先（LCA）/" rel="next" title="最近公共祖先（LCA)">
+                <i class="fa fa-chevron-left"></i> 最近公共祖先（LCA)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/12/JSP内置对象/" rel="prev" title="JSP内置对象">
+                JSP内置对象 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ab26472371fb106" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTA3NS8xMTYxMA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="DWH" />
+            
+              <p class="site-author-name" itemprop="name">DWH</p>
+              <p class="site-description motion-element" itemprop="description">踏一步便是虚无</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/rss2.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/GIT-DWH" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ZZZZone.top/" title="ZZZZone" target="_blank">ZZZZone</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://Tanruidd.top/" title="Tanruidd" target="_blank">Tanruidd</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://YJH143.top/" title="YJH143" target="_blank">YJH143</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://Xzzf.github.io/" title="XzzF" target="_blank">XzzF</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+		  
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP基本语法"><span class="nav-number">1.</span> <span class="nav-text">JSP基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-指令标识"><span class="nav-number">1.1.</span> <span class="nav-text">一.指令标识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法格式："><span class="nav-number">1.1.0.1.</span> <span class="nav-text">语法格式：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-page指令"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.page指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#①-language-属性"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">①.language 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#②-extends-属性"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">②.extends 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#③-import-属性"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">③.import 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#④-pageEncoding-属性"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">④.pageEncoding 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⑤-contentType-属性"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">⑤.contentType 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⑥-session-属性"><span class="nav-number">1.1.1.6.</span> <span class="nav-text">⑥.session 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⑦-buffer-属性"><span class="nav-number">1.1.1.7.</span> <span class="nav-text">⑦.buffer 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⑧-outoFlush-属性"><span class="nav-number">1.1.1.8.</span> <span class="nav-text">⑧.outoFlush 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⑨-isErrorPage-属性"><span class="nav-number">1.1.1.9.</span> <span class="nav-text">⑨.isErrorPage 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⑩-errorPage-属性"><span class="nav-number">1.1.1.10.</span> <span class="nav-text">⑩.errorPage 属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-include-指令"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.include 指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-taglib-指令"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.taglib 指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-脚本标识"><span class="nav-number">1.2.</span> <span class="nav-text">二. 脚本标识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-JSP表达式"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.JSP表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-声明标识"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.声明标识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-代码片段"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.代码片段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-JSP注释"><span class="nav-number">1.3.</span> <span class="nav-text">三. JSP注释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-隐藏注释"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.隐藏注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-动态注释"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.动态注释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-动作标识"><span class="nav-number">1.4.</span> <span class="nav-text">四. 动作标识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-包含文件标识-jsp-include"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.包含文件标识 \jsp:include</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#include指令-与-jsp-include动作标识"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">include指令 与 \jsp:include动作标识</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-请求转发标识-jsp-forward"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.请求转发标识 \jsp:forward</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-传递参数标识-jsp-param"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.传递参数标识 \jsp:param</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DWH</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">37.1k</span>
+  
+</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站总访问量<span id="busuanzi_value_site_uv"></span>次
+</span>
+</div>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("qXoO8h3eWAQtQjxrkjDfqW6J-gzGzoHsz", "TsjozUuV1zKPTKHzqzu4TkdD");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+  
+
+  
+
+  
+</body>
+</html>
