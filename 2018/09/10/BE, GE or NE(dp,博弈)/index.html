@@ -475,7 +475,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3 0 10 3</span><br><span class="line">0 0 1</span><br><span class="line">0 10 1</span><br><span class="line">0 2 1</span><br></pre></td></tr></table></figure>
 <p>$output$</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bad Ending</span><br></pre></td></tr></table></figure>
-<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><pre><code>因为要满足 $GE$，分数越高越好，而要满足 $BE$，分数越低越好，因此 $A$ 的策略应当是取尽可能大的，$B$ 的策略应当是取尽可能小的。从后往前推。
+<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><pre><code> 因为要满足 $GE$，分数越高越好，而要满足 $BE$，分数越低越好，因此 $A$ 的策略应当是取尽可能大的，$B$ 的策略应当是取尽可能小的。从后往前推。
 </code></pre><ul>
 <li><strong>状态方程</strong>：$dp[i][j]$ 代表在第 $i$ 个关卡中，分数为 $j$ 分时，选择操作后，最后所能获得的最大的分数。</li>
 </ul>
